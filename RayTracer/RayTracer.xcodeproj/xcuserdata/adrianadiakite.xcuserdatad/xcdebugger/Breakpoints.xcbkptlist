@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "1.0">
+   <FileBreakpoints>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "RayTracer/Scene.h"
+         timestampString = "376129921.338703"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "class Scene"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "RayTracer/ImagePlane.cpp"
+         timestampString = "376179752.209371"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
+         landmarkName = "ImagePlane::SetPixel(int x, int y, Pixel value)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "RayTracer/Scene.cpp"
+         timestampString = "376180923.520371"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
+         landmarkName = "Scene::ParsedCamera(const STPoint3&amp; eye, const STVector3&amp; up, const STPoint3&amp; lookAt, float fovy, float aspect)"
+         landmarkType = "5">
+      </FileBreakpoint>
+   </FileBreakpoints>
+</Bucket>
