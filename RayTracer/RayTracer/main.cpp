@@ -16,6 +16,7 @@ void usage()
 
 void GenerateImage() {
     // set width and height based on the fovy of the image
+    printf("generate image\n");
     
     
     for (int j = 0; j < scene->imagePlane->GetHeight(); j++) {
@@ -58,7 +59,7 @@ int main(int argc, const char * argv[])
     
     printf (" about to generate image\n");
     
-//    GenerateImage();
+    GenerateImage();
     
     
     

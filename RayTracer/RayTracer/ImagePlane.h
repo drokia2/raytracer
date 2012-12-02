@@ -35,16 +35,18 @@ public:
 //
     int GetHeight();
     
-    
-    STStatus Save(const std::string& filename) const;
+    void setWidthNHeight(int w, int h);
 
+    STStatus Save(const std::string& filename) const;
     
-    
-private:
     STVector3 LL;
     STVector3 UL;
     STVector3 LR;
     STVector3 UR;
+    
+    
+private:
+
     int width;
     int height;
     

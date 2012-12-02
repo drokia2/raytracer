@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/ImagePlane.cpp"
-         timestampString = "376179752.209371"
+         timestampString = "376182003.277569"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
          landmarkName = "ImagePlane::SetPixel(int x, int y, Pixel value)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -33,13 +33,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "RayTracer/Scene.cpp"
-         timestampString = "376180923.520371"
+         filePath = "RayTracer/main.cpp"
+         timestampString = "376181243.407491"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
-         landmarkName = "Scene::ParsedCamera(const STPoint3&amp; eye, const STVector3&amp; up, const STPoint3&amp; lookAt, float fovy, float aspect)"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "GenerateImage()"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "RayTracer/ImagePlane.cpp"
+         timestampString = "376182003.277569"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "34"
+         endingLineNumber = "34"
+         landmarkName = "ImagePlane::ImagePlane(Camera *cam)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

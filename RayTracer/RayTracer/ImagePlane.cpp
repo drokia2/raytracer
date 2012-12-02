@@ -10,16 +10,18 @@
 ImagePlane::ImagePlane(Camera *cam)
 {
     camera = cam;
+    
     STVector3 *w = camera->w;
     STVector3 *b = camera->up;
+    
     camera->u = new STVector3(STVector3::Cross(*b, *w));
     (*(camera->u)).Normalize();
     camera->v = new STVector3(STVector3::Cross(*w, *(camera->u)));
     
     STVector3 C = *(camera->eye) + *w;
     
-    STVector3 x = tan(camera->fovy/2);
-    STVector3 y = tan(camera->aspect/2);
+    STVector3 y = tan(camera->fovy/2);
+    STVector3 x = tan(camera->aspect * camera->fovy/2);
     
     STVector3 u, v;
     u = *(camera->u);
@@ -30,10 +32,12 @@ ImagePlane::ImagePlane(Camera *cam)
     LR = C - STVector3::Dot(x, u) - STVector3::Dot(y, v);
     UR = C - STVector3::Dot(x, u) + STVector3::Dot(y, v);
     
-    int imgWidth = (UL - UR).Length();
-    int imgHeight = (UL - LL).Length();
-    image = new STImage(imgWidth, imgHeight);
+
     
+}
+
+void ImagePlane::setWidthNHeight(int w, int h) {
+    image = new STImage(w, h);
 }
 
 int ImagePlane::GetWidth() {

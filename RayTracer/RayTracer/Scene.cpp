@@ -172,8 +172,6 @@ void Scene::FinishedParsing()
 void Scene::ParsedCamera(const STPoint3& eye, const STVector3& up, const STPoint3& lookAt, float fovy, float aspect)
 {
     camera = new Camera(eye, up, lookAt, fovy, aspect);
-    // store as pointers?
-
     imagePlane = new ImagePlane(camera);
 
     
@@ -181,8 +179,7 @@ void Scene::ParsedCamera(const STPoint3& eye, const STVector3& up, const STPoint
 
 void Scene::ParsedOutput(int imgWidth, int imgHeight, const std::string& outputFilename)
 {
-
-//	/** CS 148 TODO: Fill this in **/
+    imagePlane->setWidthNHeight(imgWidth, imgHeight);
 }
 
 void Scene::ParsedBounceDepth(int depth)
