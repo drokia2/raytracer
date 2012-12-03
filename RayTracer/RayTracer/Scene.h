@@ -9,6 +9,10 @@
 #include "Shape.h"
 #include "Sphere.h"
 #include "Triangle.h"
+#include "Light.h"
+#include "AmbientLight.h"
+#include "DirectionalLight.h"
+#include "PointLight.h";
 
 
 class Scene

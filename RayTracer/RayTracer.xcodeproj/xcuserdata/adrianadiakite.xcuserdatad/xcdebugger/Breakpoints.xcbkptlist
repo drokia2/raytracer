@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/Scene.h"
-         timestampString = "376129921.338703"
+         timestampString = "376216375.545755"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "21"
-         endingLineNumber = "21"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
          landmarkName = "class Scene"
          landmarkType = "3">
       </FileBreakpoint>

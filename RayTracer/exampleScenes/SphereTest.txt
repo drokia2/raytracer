@@ -1,4 +1,4 @@
-Camera   0 0 0   0 1 0   0 0 -1   45   1
+Camera   0 3 -3   1 0 0   0 0 -3   45   1
 Output   512   512   SphereTest.png
 BounceDepth   0
 ShadowBias 0.0001

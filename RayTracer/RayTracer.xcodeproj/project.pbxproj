@@ -18,6 +18,10 @@
 		3FE6A393166B305700004609 /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A391166B305700004609 /* Shape.cpp */; };
 		3FE6A396166B325900004609 /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A394166B325900004609 /* Sphere.cpp */; };
 		3FE6A399166B3C9600004609 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A397166B3C9600004609 /* Triangle.cpp */; };
+		3FE6A404166C975C00004609 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A402166C975C00004609 /* Light.cpp */; };
+		3FE6A407166C980B00004609 /* AmbientLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A405166C980A00004609 /* AmbientLight.cpp */; };
+		3FE6A40A166C982200004609 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A408166C982100004609 /* PointLight.cpp */; };
+		3FE6A40D166C983400004609 /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A40B166C983400004609 /* DirectionalLight.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,14 @@
 		3FE6A395166B325900004609 /* Sphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
 		3FE6A397166B3C9600004609 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		3FE6A398166B3C9600004609 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
+		3FE6A402166C975C00004609 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
+		3FE6A403166C975C00004609 /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Light.h; sourceTree = "<group>"; };
+		3FE6A405166C980A00004609 /* AmbientLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AmbientLight.cpp; sourceTree = "<group>"; };
+		3FE6A406166C980B00004609 /* AmbientLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmbientLight.h; sourceTree = "<group>"; };
+		3FE6A408166C982100004609 /* PointLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PointLight.cpp; sourceTree = "<group>"; };
+		3FE6A409166C982200004609 /* PointLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointLight.h; sourceTree = "<group>"; };
+		3FE6A40B166C983400004609 /* DirectionalLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DirectionalLight.cpp; sourceTree = "<group>"; };
+		3FE6A40C166C983400004609 /* DirectionalLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionalLight.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +134,14 @@
 				3FE6A395166B325900004609 /* Sphere.h */,
 				3FE6A397166B3C9600004609 /* Triangle.cpp */,
 				3FE6A398166B3C9600004609 /* Triangle.h */,
+				3FE6A402166C975C00004609 /* Light.cpp */,
+				3FE6A403166C975C00004609 /* Light.h */,
+				3FE6A405166C980A00004609 /* AmbientLight.cpp */,
+				3FE6A406166C980B00004609 /* AmbientLight.h */,
+				3FE6A408166C982100004609 /* PointLight.cpp */,
+				3FE6A409166C982200004609 /* PointLight.h */,
+				3FE6A40B166C983400004609 /* DirectionalLight.cpp */,
+				3FE6A40C166C983400004609 /* DirectionalLight.h */,
 			);
 			path = RayTracer;
 			sourceTree = "<group>";
@@ -210,6 +230,10 @@
 				3FE6A393166B305700004609 /* Shape.cpp in Sources */,
 				3FE6A396166B325900004609 /* Sphere.cpp in Sources */,
 				3FE6A399166B3C9600004609 /* Triangle.cpp in Sources */,
+				3FE6A404166C975C00004609 /* Light.cpp in Sources */,
+				3FE6A407166C980B00004609 /* AmbientLight.cpp in Sources */,
+				3FE6A40A166C982200004609 /* PointLight.cpp in Sources */,
+				3FE6A40D166C983400004609 /* DirectionalLight.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
