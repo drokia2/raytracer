@@ -61,6 +61,10 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "/Users/adrianadiakite/Documents/workspace/from_scratch/RayTracer/exampleScenes/SphereTest.txt"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/adrianadiakite/Documents/workspace/from_scratch/RayTracer/exampleScenes/TriangleTest.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

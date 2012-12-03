@@ -15,7 +15,89 @@ Triangle::Triangle(const STPoint3& one, const STPoint3& two, const STPoint3& thr
     
 }
 
-STVector3 * Triangle::IntersectsRay(Ray r) {
-    printf("TODO: implement Sphere::IntersectsRay\n");
-    return false;
+float determinant(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
+    return a*e*i + b*f*g + c*d*h - c*e*g - b*d*i - a*f*h;
 }
+
+STVector3 * Triangle::IntersectsRay(Ray r) {
+//    printf("TODO: implement Sphere::IntersectsRay\n");
+    float a,b,c,d,e,f,g,h,i;
+    //find determinant of a
+    a = v1.x - v2.x;
+    b = v1.x - v3.x;
+    c = r.direction.x;
+    d = v1.y - v2.y;
+    e = v1.y - v3.y;
+    f = r.direction.y;
+    g = v1.z - v2.z;
+    h = v1.z - v3.z;
+    i = r.direction.z;
+    float detA = determinant(a, b, c, d, e, f, g, h, i);
+    
+    //Find T
+    a = v1.x - v2.x;
+    b = v1.x - v3.x;
+    c = v1.x - r.start.x;
+    d = v1.y - v2.y;
+    e = v1.y - v3.y;
+    f = v1.y - r.start.y;
+    g = v1.z - v2.z;
+    h = v1.z - v3.z;
+    i = v1.z - r.start.z;
+    float detTNum = determinant(a, b, c, d, e, f, g, h, i);
+    float t = detTNum/ detA;
+    
+    if (r.invalidT(t)) {
+        return NULL;
+    }
+    
+    // Find gamma
+    a = v1.x - v2.x;
+    b = v1.x - r.start.x;
+    c = r.direction.x;
+    d = v1.y - v2.y;
+    e = v1.y - r.start.y;
+    f = r.direction.y;
+    g = v1.z - v2.z;
+    h = v1.z - r.start.z;
+    i = r.direction.z;
+    float detGammaNum = determinant(a, b, c, d, e, f, g, h, i);
+    float Gamma = detGammaNum/detA;
+    
+    if (Gamma < 0 || Gamma > 1) {
+        return NULL;
+    }
+    
+    // Find beta
+    a = v1.x - r.start.x;
+    b = v1.x -v3.x;
+    c = r.direction.x;
+    d = v1.y - r.start.y;
+    e = v1.y -v3.y;
+    f = r.direction.y;
+    g = v1.z - r.start.z;
+    h = v1.z -v3.z;
+    i = r.direction.z;
+    float detBetaNum = determinant(a, b, c, d, e, f, g, h, i);
+    float Beta = detBetaNum/detA;
+    
+    if (Beta < 0 || Beta > 1 - Gamma) {
+        return NULL;
+    }
+    
+    return r.InterpolatedRay(t);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
