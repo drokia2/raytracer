@@ -41,6 +41,8 @@ void GenerateImage() {
             if (min_shape) {
                 scene->imagePlane->image->SetPixel(i, j, STColor4ub(255, 0.0, 0.0, 255));
             }
+            // TODO iterate through all of the lights to figure out the shading
+            
             
             
         }

@@ -233,18 +233,21 @@ void Scene::ParsedTriangle(const STPoint3& v1, const STPoint3& v2, const STPoint
 void Scene::ParsedAmbientLight(const STColor3f& col)
 {
     AmbientLight *a = new AmbientLight(col);
+    lights.push_back(a);
 //	/** CS 148 TODO: Fill this in **/
 }
 
 void Scene::ParsedPointLight(const STPoint3& loc, const STColor3f& col)
 {
     PointLight *p = new PointLight(loc, col);
+    lights.push_back(p);
 //	/** CS 148 TODO: Fill this in **/
 }
 
 void Scene::ParsedDirectionalLight(const STVector3& dir, const STColor3f& col)
 {
     DirectionalLight *d = new DirectionalLight(dir, col);
+    lights.push_back(d);
 	/** CS 148 TODO: Fill this in **/
 }
 

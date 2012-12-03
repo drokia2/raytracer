@@ -12,7 +12,7 @@
 #include "Light.h"
 #include "AmbientLight.h"
 #include "DirectionalLight.h"
-#include "PointLight.h";
+#include "PointLight.h"
 
 
 class Scene
@@ -24,6 +24,8 @@ public:
     Camera *camera;
     ImagePlane *imagePlane;
     std::vector<Shape *> shapes;
+    std::vector<Light *> lights;
+
     //TODO: store the lights here
 
 
