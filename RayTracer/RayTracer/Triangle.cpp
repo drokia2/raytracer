@@ -15,6 +15,16 @@ Triangle::Triangle(const STPoint3& one, const STPoint3& two, const STPoint3& thr
     
 }
 
+STVector3 Triangle::CalcNormal(STVector3 surface_pt){
+    STVector3 leg1 = v2 -v1;
+    STVector3 leg2 = v3 -v1;
+    STVector3 normal = STVector3::Cross(leg1, leg2);
+    return normal;
+}
+
+
+
+
 float determinant(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
     return a*e*i + b*f*g + c*d*h - c*e*g - b*d*i - a*f*h;
 }

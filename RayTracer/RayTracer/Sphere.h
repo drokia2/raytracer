@@ -20,7 +20,8 @@ public:
 	Sphere(float r,const STPoint3& c);
     
     STVector3 * IntersectsRay(Ray r);
-    
+    STVector3 CalcNormal(STVector3 surface_pt); // not normalized
+
     
     
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/

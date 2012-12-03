@@ -13,6 +13,10 @@ Sphere::Sphere(float r, const STPoint3& c){
     center = STVector3(c.x, c.y, c.z);
 }
 
+STVector3 Sphere::CalcNormal(STVector3 surface_pt){
+    return surface_pt - center;
+}
+
 STVector3 *Sphere::IntersectsRay(Ray r) {
     float a, b, c;
     a = pow(r.direction.x,2) + pow(r.direction.y,2) + pow(r.direction.z,2);

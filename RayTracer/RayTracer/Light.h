@@ -18,6 +18,8 @@ class Light
 public:
 	Light();
     
+    STVector3 *SurfaceToLightDirection(STVector3 surfacePoint);
+    
 protected:
     STColor3f *color;
     

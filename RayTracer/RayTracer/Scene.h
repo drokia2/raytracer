@@ -24,6 +24,7 @@ public:
     Camera *camera;
     ImagePlane *imagePlane;
     std::vector<Shape *> shapes;
+    //TODO: store the lights here
 
 
 private:

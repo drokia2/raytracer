@@ -20,7 +20,8 @@ public:
 	Triangle(const STPoint3& one, const STPoint3& two, const STPoint3& three);
     
     STVector3 *IntersectsRay(Ray r);
-    
+    STVector3 CalcNormal(STVector3 surface_pt);
+
     
     
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/

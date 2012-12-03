@@ -18,3 +18,10 @@ STVector3 * Shape::IntersectsRay(Ray r) {
 //    pow(( A + t* D - C), 2) - pow(r, 2) = 0
     return NULL;
 }
+
+STVector3  Shape::CalcNormal(STVector3 surface_pt) {
+    printf("TODO: implement it in child class\n");
+    
+    //    pow(( A + t* D - C), 2) - pow(r, 2) = 0
+    return NULL;
+}
