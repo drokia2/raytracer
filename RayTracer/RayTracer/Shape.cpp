@@ -14,5 +14,7 @@ Shape::Shape(){
 
 STVector3 * Shape::IntersectsRay(Ray r) {
     printf("TODO: implement it in child class\n");
+    
+//    pow(( A + t* D - C), 2) - pow(r, 2) = 0
     return NULL;
 }

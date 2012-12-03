@@ -36,6 +36,15 @@ ImagePlane::ImagePlane(Camera *cam)
     
 }
 
+STVector3 ImagePlane::ConvertToWorld(STVector2 pt) {
+    float u, v;
+    u = pt.x/image->GetWidth();
+    v = pt.y/image->GetHeight();
+    
+    STVector3 world = (1.0 - u)*((1.0-v)*LL + v* UL) + u * ((1.0-v)*LR + v*UR);
+    return world;
+}
+
 void ImagePlane::setWidthNHeight(int w, int h) {
     image = new STImage(w, h);
 }

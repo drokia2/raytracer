@@ -20,6 +20,7 @@ public:
     typedef STColor4ub Pixel;
 
 	ImagePlane(Camera *cam);
+    std::string outputFilename;
     
     // supposed to be using bilinear interpolation
     
@@ -37,6 +38,8 @@ public:
     
     void setWidthNHeight(int w, int h);
 
+    STVector3 ConvertToWorld(STVector2 pt);
+
     STStatus Save(const std::string& filename) const;
     
     STVector3 LL;
@@ -44,7 +47,8 @@ public:
     STVector3 LR;
     STVector3 UR;
     
-    
+    STImage *image;
+
 private:
 
     int width;
@@ -52,7 +56,6 @@ private:
     
     Camera *camera;
     
-    STImage *image;
 };
 
 #endif /* defined(__RayTracer__ImagePlane__) */

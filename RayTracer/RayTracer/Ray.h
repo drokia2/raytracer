@@ -12,24 +12,26 @@
 #include <iostream>
 
 #include "st.h"
+#include "stgl.h"
 
 class Ray
 {
 public:
 	Ray(STVector3 start, STVector3 end );
     
-    STVector3 InterpolatedRay(float t);
-    
+    STVector3 *InterpolatedRay(float t);
+    STVector3 direction;
+    STVector3 start;
+
+    bool invalidT(float t);
+
     
     
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
     
     // gen viewing rays    
 private:
-    STVector3 startPt;
-    STVector3 endPt;
     
-    bool invalidT(float t);
     
     
     float minT;

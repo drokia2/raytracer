@@ -180,6 +180,7 @@ void Scene::ParsedCamera(const STPoint3& eye, const STVector3& up, const STPoint
 void Scene::ParsedOutput(int imgWidth, int imgHeight, const std::string& outputFilename)
 {
     imagePlane->setWidthNHeight(imgWidth, imgHeight);
+    imagePlane->outputFilename = outputFilename;
 }
 
 void Scene::ParsedBounceDepth(int depth)

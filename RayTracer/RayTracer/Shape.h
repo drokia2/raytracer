@@ -18,7 +18,7 @@ class Shape
 public:
 	Shape();
     
-    STVector3 * IntersectsRay(Ray r);
+    virtual STVector3 * IntersectsRay(Ray r)=0;
     
     
     

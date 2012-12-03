@@ -22,8 +22,8 @@ void GenerateImage() {
     for (int j = 0; j < scene->imagePlane->GetHeight(); j++) {
         for (int i=0; i< scene->imagePlane->GetWidth(); i++) {
             STVector2 pt_on_plane = STVector2(i, j);
-            STVector3 world_pt_plane = scene->camera->ConvertToWorld(pt_on_plane);
-            Ray *viewing_ray = scene->camera->GetViewingRay(pt_on_plane);
+            STVector3 world_pt_plane = scene->imagePlane->ConvertToWorld(pt_on_plane);
+            Ray *viewing_ray = scene->camera->GetViewingRay(world_pt_plane);
             Shape *min_shape = NULL;
             float min_dist = -1;
             for (int k=0;  k < scene->shapes.size(); k++) {
@@ -39,10 +39,15 @@ void GenerateImage() {
                 
             }
             
+            scene->imagePlane->SetPixel(i, j, STColor4ub(1.0, 0.0, 0.0, 1.0));
+            
             
             
         }
     }
+    std::string str = scene->imagePlane->outputFilename;
+    
+    STStatus status = scene->imagePlane->image->Save("adrianakakaka.jpg");
     
     
     

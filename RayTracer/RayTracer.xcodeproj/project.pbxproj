@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3FE6A35D166AC2CE00004609 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A35C166AC2CE00004609 /* main.cpp */; };
-		3FE6A35F166AC2CE00004609 /* RayTracer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FE6A35E166AC2CE00004609 /* RayTracer.1 */; };
 		3FE6A378166AC37700004609 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE6A377166AC37700004609 /* GLUT.framework */; };
 		3FE6A37A166AC37E00004609 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE6A379166AC37E00004609 /* OpenGL.framework */; };
 		3FE6A37D166AC49800004609 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A37B166AC49800004609 /* Scene.cpp */; };
@@ -45,7 +44,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				3FE6A35F166AC2CE00004609 /* RayTracer.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -54,7 +52,6 @@
 /* Begin PBXFileReference section */
 		3FE6A358166AC2CE00004609 /* RayTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE6A35C166AC2CE00004609 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		3FE6A35E166AC2CE00004609 /* RayTracer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = RayTracer.1; sourceTree = "<group>"; };
 		3FE6A365166AC2E300004609 /* libst.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libst.xcodeproj; path = ../libst/xcode/libst.xcodeproj; sourceTree = "<group>"; };
 		3FE6A377166AC37700004609 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		3FE6A379166AC37E00004609 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -119,7 +116,6 @@
 				3FE6A37B166AC49800004609 /* Scene.cpp */,
 				3FE6A37C166AC49800004609 /* Scene.h */,
 				3FE6A35C166AC2CE00004609 /* main.cpp */,
-				3FE6A35E166AC2CE00004609 /* RayTracer.1 */,
 				3FE6A391166B305700004609 /* Shape.cpp */,
 				3FE6A392166B305700004609 /* Shape.h */,
 				3FE6A394166B325900004609 /* Sphere.cpp */,

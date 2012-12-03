@@ -20,19 +20,10 @@ Camera::Camera(const STPoint3& e, const STVector3& u, const STPoint3& lA, float 
 
 }
 
-STVector3 Camera::ConvertToWorld(STVector2 pt) {
-    STVector3 world = pt.x * (*u) + pt.y * (*v) + (*w);
-    return world;    
-}
 
-Ray *Camera::GetViewingRay(STVector2 img_plane_pt){
-    //convert img_plane_pt to world coordinates
-    STVector3 world_img_plane_pt = ConvertToWorld(img_plane_pt);
-    STVector3 normalizedDirection = world_img_plane_pt - *eye;
-    
-    Ray *r = new Ray(world_img_plane_pt, world_img_plane_pt + normalizedDirection);
-    
-    return r;
+
+Ray *Camera::GetViewingRay(STVector3 world_img_plane_pt){
+    return new Ray(*eye, world_img_plane_pt);
 }
 
 

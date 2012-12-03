@@ -36,8 +36,8 @@ public:
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
     
     // gen viewing rays
-    Ray *GetViewingRay(STVector2 img_plane_pt);
-    STVector3 ConvertToWorld(STVector2 pt);
+    Ray *GetViewingRay(STVector3 world_pt);
+//    STVector3 ConvertToWorld(STVector2 pt);
     
 private:
     
