@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/Scene.h"
-         timestampString = "376216375.545755"
+         timestampString = "376271627.7153"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
+         startingLineNumber = "28"
+         endingLineNumber = "28"
          landmarkName = "class Scene"
          landmarkType = "3">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/main.cpp"
-         timestampString = "376270811.30523"
+         timestampString = "376271627.7153"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
          landmarkName = "GenerateImage()"
          landmarkType = "7">
       </FileBreakpoint>

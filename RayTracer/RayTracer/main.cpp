@@ -40,8 +40,9 @@ void GenerateImage() {
                 }
             }
             
-            if (min_intersect) { // if camera can see it 
-                scene->imagePlane->image->SetPixel(i, j, STColor4ub(255, 0.0, 0.0, 255));
+            if (min_intersect) { // if camera can see it
+                STColor3f calculatedColor = scene->CalcColor(*min_intersect);
+                scene->imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             }
             // TODO iterate through all of the lights to figure out the shading
             

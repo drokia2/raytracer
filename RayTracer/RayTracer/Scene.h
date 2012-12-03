@@ -13,6 +13,7 @@
 #include "AmbientLight.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
+#include "RayIntersection.h"
 
 
 class Scene
@@ -21,6 +22,8 @@ public:
 	Scene(std::string sceneFilename);
 
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
+    STColor3f CalcColor(RayIntersection surface_pt);
+    
     Camera *camera;
     ImagePlane *imagePlane;
     std::vector<Shape *> shapes;

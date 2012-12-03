@@ -11,3 +11,8 @@
 AmbientLight::AmbientLight(const STColor3f& c){
     color = new STColor3f(c);
 }
+
+STColor3f AmbientLight::sumComponenent(RayIntersection inter){
+    printf(" TODO implement ambient light sum componenet\n");
+    return STColor3f(1.0, 0.0, 0.0);
+}

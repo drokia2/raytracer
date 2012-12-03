@@ -3,10 +3,27 @@
 #include <sstream>
 
 
+STColor3f Scene::CalcColor(RayIntersection surface_inter){
+    STColor3f calcColor = STColor3f(0, 0, 0);
+    
+    for (int i = 0; i < lights.size(); i++) {
+        Light *l = lights[i];
+        calcColor = calcColor + l->sumComponenent(surface_inter);
+        
+    }
+    
+    return STColor3f(1.0, 0.0, 0.0);
+}
+
+
+
+
+
 Scene::Scene(std::string sceneFilename)
 {
 	Parse(sceneFilename);
 }
+
 
 void Scene::Parse(std::string sceneFilename)
 {
