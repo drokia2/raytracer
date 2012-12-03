@@ -24,6 +24,8 @@ void GenerateImage() {
             STVector2 pt_on_plane = STVector2(i, j);
             STVector3 world_pt_plane = scene->imagePlane->ConvertToWorld(pt_on_plane);
             Ray *viewing_ray = scene->camera->GetViewingRay(world_pt_plane);
+            printf("start x %f y %f z %f", viewing_ray->start.x, viewing_ray->start.y, viewing_ray->start.z);
+            printf("end x %f y %f z %f", viewing_ray->start.x + viewing_ray->direction.x, viewing_ray->start.y + viewing_ray->direction.y, viewing_ray->start.z + viewing_ray->direction.z);
             Shape *min_shape = NULL;
             float min_dist = -1;
             for (int k=0;  k < scene->shapes.size(); k++) {
@@ -35,19 +37,21 @@ void GenerateImage() {
                         min_dist = dist;
                         min_shape = s;
                     }
-                }
+                } 
                 
             }
             
-            scene->imagePlane->SetPixel(i, j, STColor4ub(1.0, 0.0, 0.0, 1.0));
-            
+            if (min_shape){
+                //printf(" red point\n\n");
+                scene->imagePlane->image->SetPixel(i, j, STColor4ub(255, 0.0, 0.0, 255));
+            }
             
             
         }
     }
     std::string str = scene->imagePlane->outputFilename;
     
-    STStatus status = scene->imagePlane->image->Save("adrianakakaka.jpg");
+    STStatus status = scene->imagePlane->image->Save("adriana.jpg");
     
     
     

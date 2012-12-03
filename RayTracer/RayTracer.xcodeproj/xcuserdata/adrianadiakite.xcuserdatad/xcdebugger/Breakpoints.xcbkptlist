@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/main.cpp"
-         timestampString = "376186799.320006"
+         timestampString = "376187964.457274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
          landmarkName = "GenerateImage()"
          landmarkType = "7">
       </FileBreakpoint>

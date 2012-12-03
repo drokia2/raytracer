@@ -25,7 +25,7 @@ bool Ray::invalidT(float t) {
 
 STVector3 *Ray::InterpolatedRay(float t) {
     if (invalidT(t)) {
-        printf("Ray.cpp: invalid t\n");
+//        printf("Ray.cpp: invalid t\n");
         return NULL;
     }
     return new STVector3(start + t * direction);
