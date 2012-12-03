@@ -20,17 +20,17 @@ ImagePlane::ImagePlane(Camera *cam)
     
     STVector3 C = *(camera->eye) + *w;
     
-    STVector3 y = tan(camera->fovy/2);
-    STVector3 x = tan(camera->aspect * camera->fovy/2);
+    float y = tan(camera->fovy/2);
+    float x = tan(camera->aspect * camera->fovy/2);
     
     STVector3 u, v;
     u = *(camera->u);
     v = *(camera->v);
     
-    LL = C + STVector3::Dot(x, u) - STVector3::Dot(y, v);
-    UL = C + STVector3::Dot(x, u) + STVector3::Dot(y, v);
-    LR = C - STVector3::Dot(x, u) - STVector3::Dot(y, v);
-    UR = C - STVector3::Dot(x, u) + STVector3::Dot(y, v);
+    LL = C + x* u - y* v;
+    UL = C + x* u + y* v;
+    LR = C - x* u - y* v;
+    UR = C - x* u + y* v;
     
 
     
@@ -40,6 +40,9 @@ STVector3 ImagePlane::ConvertToWorld(STVector2 pt) {
     float u, v;
     u = pt.x/image->GetWidth();
     v = pt.y/image->GetHeight();
+    if (pt.x == 155 && pt.y == 155){
+        printf(" yo\n");
+    }
     
     STVector3 world = (1.0 - u)*((1.0-v)*LL + v* UL) + u * ((1.0-v)*LR + v*UR);
     return world;

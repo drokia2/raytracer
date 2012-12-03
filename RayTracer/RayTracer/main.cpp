@@ -38,7 +38,7 @@ void GenerateImage() {
                 }
             }
             
-            if (min_shape) {
+            if (min_shape || (i>100 && i < 150 && j>100 && j < 150) ) {
                 scene->imagePlane->image->SetPixel(i, j, STColor4ub(255, 0.0, 0.0, 255));
             }
             

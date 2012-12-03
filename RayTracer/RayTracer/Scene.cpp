@@ -220,7 +220,6 @@ void Scene::ParsedTranslate(float tx, float ty, float tz)
 
 void Scene::ParsedSphere(const STPoint3& center, float radius)
 {
-    printf (" parsing sphere\n");
     Sphere *s = new Sphere(radius, center);
     shapes.push_back(s);
 }
