@@ -1,23 +1,24 @@
 //
-//  Intersection.h
+//  RayIntersection.h
 //  RayTracer
 //
 //  Created by Adriana Diakite on 12/3/12.
 //  Copyright (c) 2012 Adriana Diakite. All rights reserved.
 //
 
-#ifndef __RayTracer__Intersection__
-#define __RayTracer__Intersection__
+#ifndef __RayTracer__RayIntersection__
+#define __RayTracer__RayIntersection__
 
 #include <iostream>
 #include "stgl.h"
 #include "st.h"
-#include "Shape.h"
+//#include "Shape.h"
 
-class Intersection
+
+class RayIntersection
 {
 public:
-	Intersection(float time, STVector3 intersect_pt, Shape s);
+	RayIntersection(float time, STVector3 intersect_pt, STVector3 normal);
     
     float t;
     STVector3 pt;
@@ -26,4 +27,5 @@ protected:
     
     
 };
-#endif /* defined(__RayTracer__Intersection__) */
+
+#endif /* defined(__RayTracer__RayIntersection__) */

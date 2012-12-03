@@ -22,7 +22,7 @@
 		3FE6A407166C980B00004609 /* AmbientLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A405166C980A00004609 /* AmbientLight.cpp */; };
 		3FE6A40A166C982200004609 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A408166C982100004609 /* PointLight.cpp */; };
 		3FE6A40D166C983400004609 /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A40B166C983400004609 /* DirectionalLight.cpp */; };
-		3FE6A410166C9C7E00004609 /* Intersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A40E166C9C7D00004609 /* Intersection.cpp */; };
+		3FE6A41F166D69CA00004609 /* RayIntersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A41D166D69CA00004609 /* RayIntersection.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,8 @@
 		3FE6A409166C982200004609 /* PointLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointLight.h; sourceTree = "<group>"; };
 		3FE6A40B166C983400004609 /* DirectionalLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DirectionalLight.cpp; sourceTree = "<group>"; };
 		3FE6A40C166C983400004609 /* DirectionalLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionalLight.h; sourceTree = "<group>"; };
-		3FE6A40E166C9C7D00004609 /* Intersection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Intersection.cpp; sourceTree = "<group>"; };
-		3FE6A40F166C9C7E00004609 /* Intersection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Intersection.h; sourceTree = "<group>"; };
+		3FE6A41D166D69CA00004609 /* RayIntersection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RayIntersection.cpp; sourceTree = "<group>"; };
+		3FE6A41E166D69CA00004609 /* RayIntersection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RayIntersection.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +145,8 @@
 				3FE6A409166C982200004609 /* PointLight.h */,
 				3FE6A40B166C983400004609 /* DirectionalLight.cpp */,
 				3FE6A40C166C983400004609 /* DirectionalLight.h */,
-				3FE6A40E166C9C7D00004609 /* Intersection.cpp */,
-				3FE6A40F166C9C7E00004609 /* Intersection.h */,
+				3FE6A41D166D69CA00004609 /* RayIntersection.cpp */,
+				3FE6A41E166D69CA00004609 /* RayIntersection.h */,
 			);
 			path = RayTracer;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 				3FE6A407166C980B00004609 /* AmbientLight.cpp in Sources */,
 				3FE6A40A166C982200004609 /* PointLight.cpp in Sources */,
 				3FE6A40D166C983400004609 /* DirectionalLight.cpp in Sources */,
-				3FE6A410166C9C7E00004609 /* Intersection.cpp in Sources */,
+				3FE6A41F166D69CA00004609 /* RayIntersection.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

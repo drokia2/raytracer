@@ -13,13 +13,14 @@
 #include "Shape.h"
 #include "stgl.h"
 #include "Ray.h"
+#include "RayIntersection.h"
 
 class Triangle: public Shape
 {
 public:
 	Triangle(const STPoint3& one, const STPoint3& two, const STPoint3& three);
     
-    STVector3 *IntersectsRay(Ray r);
+    RayIntersection *IntersectsRay(Ray r);
     STVector3 CalcNormal(STVector3 surface_pt);
 
     

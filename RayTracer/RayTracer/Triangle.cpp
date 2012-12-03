@@ -29,7 +29,7 @@ float determinant(float a, float b, float c, float d, float e, float f, float g,
     return a*e*i + b*f*g + c*d*h - c*e*g - b*d*i - a*f*h;
 }
 
-STVector3 * Triangle::IntersectsRay(Ray r) {
+RayIntersection * Triangle::IntersectsRay(Ray r) {
 //    printf("TODO: implement Sphere::IntersectsRay\n");
     float a,b,c,d,e,f,g,h,i;
     //find determinant of a
@@ -94,8 +94,10 @@ STVector3 * Triangle::IntersectsRay(Ray r) {
     if (Beta < 0 || Beta > 1 - Gamma) {
         return NULL;
     }
+    STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)));
+    RayIntersection * rt = new RayIntersection(t, *(r.InterpolatedRay(t)), normal);
     
-    return r.InterpolatedRay(t);
+    return rt;
 }
 
 

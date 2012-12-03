@@ -12,13 +12,14 @@
 #include <iostream>
 #include "stgl.h"
 #include "Ray.h"
+#include "RayIntersection.h"
 
 class Shape
 {
 public:
 	Shape();
     
-    virtual STVector3 * IntersectsRay(Ray r)=0;
+    virtual RayIntersection * IntersectsRay(Ray r)=0;
     
     virtual STVector3 CalcNormal(STVector3 surface_pt)=0;
     

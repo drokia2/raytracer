@@ -13,13 +13,14 @@
 #include "Shape.h"
 #include "Ray.h"
 #include "stgl.h"
+#include "RayIntersection.h"
 
 class Sphere: public Shape
 {
 public:
 	Sphere(float r,const STPoint3& c);
     
-    STVector3 * IntersectsRay(Ray r);
+    RayIntersection * IntersectsRay(Ray r);
     STVector3 CalcNormal(STVector3 surface_pt); // not normalized
 
     
