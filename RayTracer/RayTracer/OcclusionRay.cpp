@@ -7,7 +7,7 @@
 //
 
 
-#define EPSILON .00000005
+#define EPSILON .01
 
 #include "OcclusionRay.h"
 OcclusionRay::OcclusionRay(STVector3 s, STVector3 end ){

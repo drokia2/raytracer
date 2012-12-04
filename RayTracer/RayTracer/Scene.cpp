@@ -20,12 +20,10 @@ bool Scene::Occluded(SceneObject o, RayIntersection surface_pt){
         Light *l = lights[i];
         
         if (typeid(PointLight) == typeid(*l)) {
-//            printf("-----------------point light\n");
             PointLight *light = (PointLight *)l;
             OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location));
             
             for (int i = 0; i < objects.size(); i++) {
-                printf(" I'm in\n");
                 SceneObject *o = objects[i];
                 if (o->shape->IntersectsRay(*surfaceLightRay)) {
                     free(surfaceLightRay);
