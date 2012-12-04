@@ -14,7 +14,7 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
     }
     
     STVector3 R = Utils::reflectVector(surface_pt.ptNormal, viewingRay->direction);
-    Ray *newBounceRay = new Ray(surface_pt.pt, surface_pt.pt + R);
+    Ray *newBounceRay = new Ray(surface_pt.pt, surface_pt.pt - R);
     
     SceneObject *intersectedObject = NULL;
     RayIntersection *intersectionPoint = NULL;
@@ -22,6 +22,7 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
     if (!Intersect(newBounceRay, &intersectedObject, &intersectionPoint) || depthLevel == bounceDepth) {
         return calcColor;
     }
+    
     return calcColor + material->mirr * CalcColor(*intersectionPoint, newBounceRay, intersectedObject, depthLevel + 1);
 }
 
