@@ -12,27 +12,30 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
         if(Occluded(min_object, surface_pt, l) && (typeid(AmbientLight) != typeid(*l))) continue;
         calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
     }
-    
     return calcColor;
 }
 
-STColor3f Scene::CalcAmbient(RayIntersection surface_pt, Material *material, Ray *viewingRay) {
-    STColor3f calcColor = STColor3f(0, 0, 0);
-    
-    for (int i = 0; i < lights.size(); i++) {
-        Light *l = lights[i];
-        if (typeid(AmbientLight) != typeid(*l)) continue;
-        calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
-        break; // because there is only one ambient light
-    }
-    
-    return calcColor;
-}
+//
+//STColor3f Scene::reflectionColor(Ray *bounceRay, RayIntersection surfacePoint, int reflectionDepth, STColor3f currentColor) {
+//    
+//    if (reflectionDepth == bounceDepth && surfacePoint == NULL) {
+//        return currentColor;
+//    }
+//    
+//    STVector3 R = Utils::reflectVector(surfacePoint.ptNormal, bounceRay);
+//    for (int i = 0; i < objects.size(); i++) {
+//        SceneObject *o = objects[i];
+//        RayIntersection *inter = o->shape->IntersectsRay(*bounceRay);
+//    }
+//    
+//    return reflectionColor(R, surfacePoint, reflectionDepth + 1, cu)
+//    
+//}
 
 bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
     if (typeid(PointLight) == typeid(*l)) {
         PointLight *light = (PointLight *)l;
-        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location), ep);
+        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location), epsilon);
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
@@ -46,9 +49,9 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         free(surfaceLightRay);
         
     } else if (typeid(DirectionalLight) == typeid(*l)) {
-       // return false;
+        // return false;
         DirectionalLight *light = (DirectionalLight *)l;
-        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt - *(light->direction), ep);
+        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt - *(light->direction), epsilon);
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
@@ -65,7 +68,59 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
     return false;
 }
 
-
+void Scene::Render() {
+    // set width and height based on the fovy of the image
+    printf("generate image\n");
+    
+    
+    for (int j = 0; j < imagePlane->GetHeight(); j++) {
+        for (int i=0; i< imagePlane->GetWidth(); i++) {
+            STVector2 pt_on_plane = STVector2(i, j);
+            STVector3 world_pt_plane = imagePlane->ConvertToWorld(pt_on_plane);
+            Ray *viewing_ray = camera->GetViewingRay(world_pt_plane);
+            SceneObject *min_object = NULL;
+            
+            float min_dist = -1;
+            RayIntersection * min_intersect = NULL;
+            for (int k=0;  k < objects.size(); k++) {
+                SceneObject *o = objects[k];
+                RayIntersection *inter = o->shape->IntersectsRay(*viewing_ray);
+                if (inter){
+                    float dist = abs((inter->pt - world_pt_plane).Length());  /// maybe t
+                    if (dist < min_dist || min_dist == -1) {
+                        min_dist = dist;
+                        min_object = o;
+                        min_intersect = inter;
+                    } else {
+                        free(inter);
+                    }
+                }
+            }
+            
+            if (min_intersect) { // if camera can see it
+                STColor3f calculatedColor = CalcColor(*min_intersect,viewing_ray, min_object);
+                
+                imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
+            }
+            // TODO iterate through all of the lights to figure out the shading
+            
+            free(viewing_ray);
+            
+        }
+    }
+    
+    for (int j = 0; j < imagePlane->GetHeight(); j++) {
+        for (int i=0; i< imagePlane->GetWidth(); i++) {
+            STColor4ub currentColor = imagePlane->image->GetPixel(i,j);
+            
+        }
+        
+        std::string str = imagePlane->outputFilename;
+        
+        imagePlane->image->Save("adriana.jpg");
+        
+    }
+}
 
 
 
@@ -222,13 +277,15 @@ void Scene::Parse(std::string sceneFilename)
 
 void Scene::BeganParsing()
 {
-    printf("TODO: BeganParsing");
+    printf("BeganParsing");
     
 }
 
 void Scene::FinishedParsing()
 {
     //	/** CS 148 TODO: Fill this in **/
+    printf("FinishedParsing");
+    
     
 }
 
@@ -254,8 +311,7 @@ void Scene::ParsedBounceDepth(int depth)
 
 void Scene::ParsedShadowBias(float bias)
 {
-    ep = bias;
-    //	/** CS 148 TODO: Fill this in **/
+    epsilon = bias;
 }
 
 void Scene::ParsedPushMatrix()

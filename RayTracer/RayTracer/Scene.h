@@ -24,21 +24,7 @@ public:
 	Scene(std::string sceneFilename);
 
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
-    STColor3f CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object);
-    STColor3f CalcAmbient(RayIntersection surface_pt, Material *material, Ray *viewingRay);
-    
-    Camera *camera;
-    ImagePlane *imagePlane;
-    Material *lastDeclaredMaterial;
-    bool Occluded(SceneObject *o, RayIntersection surface_pt, Light *l);
-    
-    std::vector<Shape *> shapes;
-    std::vector<SceneObject *> objects;
-    std::vector<Light *> lights;
-    float ep;
-    
-    //TODO: store the lights here
-
+    void Render();
 
 private:
 
@@ -63,6 +49,17 @@ private:
 	void ParsedMaterial(const STColor3f& amb, const STColor3f& diff, const STColor3f& spec, const STColor3f& mirr, float shine);
 
 	/** CS 148 TODO: Add instance vars to store camera, lights, objects, etc. **/
+    
+    STColor3f CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object);
+    bool Occluded(SceneObject *o, RayIntersection surface_pt, Light *l);
+    Camera *camera;
+    ImagePlane *imagePlane;
+    Material *lastDeclaredMaterial;
+    int bounceDepth;
+    std::vector<Shape *> shapes;
+    std::vector<SceneObject *> objects;
+    std::vector<Light *> lights;
+    float epsilon;
     
 };
 
