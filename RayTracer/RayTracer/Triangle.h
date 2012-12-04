@@ -21,7 +21,7 @@ public:
 	Triangle(const STPoint3& one, const STPoint3& two, const STPoint3& three);
     
     RayIntersection *IntersectsRay(Ray r);
-    STVector3 CalcNormal(STVector3 surface_pt);
+    STVector3 CalcNormal(STVector3 surface_pt, Ray r);
 
     
     

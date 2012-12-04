@@ -15,12 +15,13 @@ Triangle::Triangle(const STPoint3& one, const STPoint3& two, const STPoint3& thr
     
 }
 
-STVector3 Triangle::CalcNormal(STVector3 surface_pt){
+STVector3 Triangle::CalcNormal(STVector3 surface_pt, Ray r){
     STVector3 leg1 = v2 -v1;
     STVector3 leg2 = v3 -v1;
     STVector3 normal = STVector3::Cross(leg1, leg2);
     normal.Normalize();
-    return -normal;
+    if (STVector3::Dot(r.direction, normal) > 0) return -normal;
+    return normal;
 }
 
 
@@ -95,7 +96,7 @@ RayIntersection * Triangle::IntersectsRay(Ray r) {
     if (Beta < 0 || Beta > 1 - Gamma) {
         return NULL;
     }
-    STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)));
+    STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)), r);
     RayIntersection * rt = new RayIntersection(t, *(r.InterpolatedRay(t)), normal);
     
     return rt;

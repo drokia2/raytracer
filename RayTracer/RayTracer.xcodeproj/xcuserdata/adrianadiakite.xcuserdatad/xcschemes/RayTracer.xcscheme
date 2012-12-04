@@ -69,6 +69,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "test.txt"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "CornellBox.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

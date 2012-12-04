@@ -21,7 +21,7 @@ public:
     
     virtual RayIntersection * IntersectsRay(Ray r)=0;
     
-    virtual STVector3 CalcNormal(STVector3 surface_pt)=0;
+    virtual STVector3 CalcNormal(STVector3 surface_pt, Ray r)=0;
     
     
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/

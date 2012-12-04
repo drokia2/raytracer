@@ -13,7 +13,7 @@ Sphere::Sphere(float r, const STPoint3& c){
     center = STVector3(c.x, c.y, c.z);
 }
 
-STVector3 Sphere::CalcNormal(STVector3 surface_pt){
+STVector3 Sphere::CalcNormal(STVector3 surface_pt, Ray unused){
     STVector3 v = surface_pt - center;
     v.Normalize();
     return v;
@@ -31,7 +31,7 @@ RayIntersection *Sphere::IntersectsRay(Ray r) {
         return NULL;
     } else if (discriminant == 0.0) {
         float t = -b / (2*a);
-        STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)));
+        STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)), r);
         RayIntersection *rt = new RayIntersection(t, *(r.InterpolatedRay(t)), normal);
         return rt;
     } else {
@@ -39,13 +39,13 @@ RayIntersection *Sphere::IntersectsRay(Ray r) {
         float t2 = (-b + sqrt(discriminant)) / (2*a);
         
         if (r.invalidT(t1) && !r.invalidT(t2)) {
-            STVector3 normal = CalcNormal(*(r.InterpolatedRay(t2)));
+            STVector3 normal = CalcNormal(*(r.InterpolatedRay(t2)), r);
             RayIntersection *rt = new RayIntersection(t2, *(r.InterpolatedRay(t2)), normal);
             return rt;
         }
         
         if (!r.invalidT(t1) && r.invalidT(t2)) {
-            STVector3 normal = CalcNormal(*(r.InterpolatedRay(t1)));
+            STVector3 normal = CalcNormal(*(r.InterpolatedRay(t1)), r);
             RayIntersection *rt = new RayIntersection(t1, *(r.InterpolatedRay(t1)), normal);
             return rt;
         }
@@ -55,7 +55,7 @@ RayIntersection *Sphere::IntersectsRay(Ray r) {
         }
         
         STVector3 *ray = r.InterpolatedRay(fmin(t1,t2));
-        STVector3 normal = CalcNormal(*ray);
+        STVector3 normal = CalcNormal(*ray, r);
         RayIntersection *rt = new RayIntersection(fmin(t1,t2), *ray, normal);
         return rt;
     }

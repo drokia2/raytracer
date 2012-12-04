@@ -21,7 +21,7 @@ public:
 	Sphere(float r,const STPoint3& c);
     
     RayIntersection * IntersectsRay(Ray r);
-    STVector3 CalcNormal(STVector3 surface_pt); // not normalized
+    STVector3 CalcNormal(STVector3 surface_pt, Ray unused); // not normalized
 
     
     
