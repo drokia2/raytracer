@@ -3,34 +3,27 @@
 #include <sstream>
 
 
-STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object) {
+STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel) {
+    
     STColor3f calcColor = STColor3f(0, 0, 0);
     Material *material = min_object->material;
-    
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
         if(Occluded(min_object, surface_pt, l) && (typeid(AmbientLight) != typeid(*l))) continue;
         calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
     }
-    return calcColor;
+    
+    STVector3 R = Utils::reflectVector(surface_pt.ptNormal, viewingRay->direction);
+    Ray *newBounceRay = new Ray(surface_pt.pt, surface_pt.pt + R);
+    
+    SceneObject *intersectedObject = NULL;
+    RayIntersection *intersectionPoint = NULL;
+    
+    if (!Intersect(newBounceRay, &intersectedObject, &intersectionPoint) || depthLevel == bounceDepth) {
+        return calcColor;
+    }
+    return calcColor + material->mirr * CalcColor(*intersectionPoint, newBounceRay, intersectedObject, depthLevel + 1);
 }
-
-//
-//STColor3f Scene::reflectionColor(Ray *bounceRay, RayIntersection surfacePoint, int reflectionDepth, STColor3f currentColor) {
-//    
-//    if (reflectionDepth == bounceDepth && surfacePoint == NULL) {
-//        return currentColor;
-//    }
-//    
-//    STVector3 R = Utils::reflectVector(surfacePoint.ptNormal, bounceRay);
-//    for (int i = 0; i < objects.size(); i++) {
-//        SceneObject *o = objects[i];
-//        RayIntersection *inter = o->shape->IntersectsRay(*bounceRay);
-//    }
-//    
-//    return reflectionColor(R, surfacePoint, reflectionDepth + 1, cu)
-//    
-//}
 
 bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
     if (typeid(PointLight) == typeid(*l)) {
@@ -49,7 +42,6 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         free(surfaceLightRay);
         
     } else if (typeid(DirectionalLight) == typeid(*l)) {
-        // return false;
         DirectionalLight *light = (DirectionalLight *)l;
         OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt - *(light->direction), epsilon);
         
@@ -102,7 +94,7 @@ void Scene::Render() {
             RayIntersection *intersectionPoint = NULL;
             
             if (Intersect(viewing_ray, &intersectedObject, &intersectionPoint)) {
-                STColor3f calculatedColor = CalcColor(*intersectionPoint,viewing_ray, intersectedObject);
+                STColor3f calculatedColor = CalcColor(*intersectionPoint,viewing_ray, intersectedObject, 0);
                 
                 imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             }
@@ -112,17 +104,11 @@ void Scene::Render() {
         }
     }
     
-    for (int j = 0; j < imagePlane->GetHeight(); j++) {
-        for (int i=0; i< imagePlane->GetWidth(); i++) {
-            STColor4ub currentColor = imagePlane->image->GetPixel(i,j);
-            
-        }
-        
-        std::string str = imagePlane->outputFilename;
-        
-        imagePlane->image->Save("adriana.jpg");
-        
-    }
+    std::string str = imagePlane->outputFilename;
+    
+    imagePlane->image->Save("adriana.jpg");
+    
+    
 }
 
 
@@ -280,16 +266,12 @@ void Scene::Parse(std::string sceneFilename)
 
 void Scene::BeganParsing()
 {
-    printf("BeganParsing");
-    
+    printf("BeganParsing");    
 }
 
 void Scene::FinishedParsing()
 {
-    //	/** CS 148 TODO: Fill this in **/
     printf("FinishedParsing");
-    
-    
 }
 
 
@@ -309,7 +291,7 @@ void Scene::ParsedOutput(int imgWidth, int imgHeight, const std::string& outputF
 
 void Scene::ParsedBounceDepth(int depth)
 {
-    //	/** CS 148 TODO: Fill this in **/
+    bounceDepth = depth;
 }
 
 void Scene::ParsedShadowBias(float bias)
@@ -349,6 +331,8 @@ void Scene::ParsedSphere(const STPoint3& center, float radius)
     
     SceneObject *o = new SceneObject(s,lastDeclaredMaterial);
     objects.push_back(o);
+    
+    printf("sphere parsed\n");
 }
 
 void Scene::ParsedTriangle(const STPoint3& v1, const STPoint3& v2, const STPoint3& v3)
@@ -382,13 +366,3 @@ void Scene::ParsedMaterial(const STColor3f& amb, const STColor3f& diff, const ST
 {
     lastDeclaredMaterial = new Material(amb,diff,spec,mirr,shine);
 }
-
-
-
-
-
-
-
-
-
-

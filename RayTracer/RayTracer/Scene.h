@@ -50,9 +50,10 @@ private:
 
 	/** CS 148 TODO: Add instance vars to store camera, lights, objects, etc. **/
     
-    STColor3f CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object);
+    STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel);
     bool Occluded(SceneObject *o, RayIntersection surface_pt, Light *l);
-    bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint);
+    bool Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint);
+    STColor3f reflectColor(Ray *bounceRay, int depthLevel, STColor3f currentColor, RayIntersection *intersectionPoint);
     Camera *camera;
     ImagePlane *imagePlane;
     Material *lastDeclaredMaterial;

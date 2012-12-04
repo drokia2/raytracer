@@ -41,9 +41,6 @@ STVector3 ImagePlane::ConvertToWorld(STVector2 pt) {
     float u, v;
     u = pt.x/image->GetWidth();
     v = pt.y/image->GetHeight();
-    if (pt.x == 155 && pt.y == 155){
-        printf(" yo\n");
-    }
     
     STVector3 world = (1.0 - u)*((1.0-v)*LL + v* UL) + u * ((1.0-v)*LR + v*UR);
     return world;
