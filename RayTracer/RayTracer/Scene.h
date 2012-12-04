@@ -25,11 +25,12 @@ public:
 
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
     STColor3f CalcColor(RayIntersection surface_pt, Material *material, Ray *viewingRay);
+    STColor3f CalcAmbient(RayIntersection surface_pt, Material *material, Ray *viewingRay);
     
     Camera *camera;
     ImagePlane *imagePlane;
     Material *lastDeclaredMaterial;
-    bool Occluded(SceneObject o, RayIntersection surface_pt);
+    bool Occluded(SceneObject *o, RayIntersection surface_pt);
     
     std::vector<Shape *> shapes;
     std::vector<SceneObject *> objects;

@@ -43,8 +43,13 @@ void GenerateImage() {
                 }
             }
             
-            if (min_intersect && !scene->Occluded(*min_object, *min_intersect)) { // if camera can see it
-                STColor3f calculatedColor = scene->CalcColor(*min_intersect,min_object->material,viewing_ray);
+            if (min_intersect) { // if camera can see it
+                STColor3f calculatedColor;
+                if(scene->Occluded(min_object, *min_intersect)) {
+                  calculatedColor = scene->CalcAmbient(*min_intersect,min_object->material,viewing_ray);
+                } else {
+                  calculatedColor = scene->CalcColor(*min_intersect,min_object->material,viewing_ray);
+                }
 //                calculatedColor = STColor3f(1.0, 0.0 , 0.0);
                 
                 scene->imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
@@ -70,7 +75,6 @@ int main(int argc, const char * argv[])
     scene = new Scene(sceneFileName);
 
     
-    printf (" about to generate image\n");
     
     GenerateImage();
     

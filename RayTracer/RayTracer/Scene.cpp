@@ -14,8 +14,22 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Material *material, Ray *
     return calcColor;
 }
 
-bool Scene::Occluded(SceneObject o, RayIntersection surface_pt){
+STColor3f Scene::CalcAmbient(RayIntersection surface_pt, Material *material, Ray *viewingRay) {
+    STColor3f calcColor = STColor3f(0, 0, 0);
     
+    for (int i = 0; i < lights.size(); i++) {
+        Light *l = lights[i];
+        if (typeid(AmbientLight) != typeid(*l)) continue;
+        calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
+        //printf("i %d\n", i);
+        break; // because there is only one ambient light
+    }
+    
+    return calcColor;
+}
+
+bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt){
+//    return false;
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
         
@@ -25,9 +39,9 @@ bool Scene::Occluded(SceneObject o, RayIntersection surface_pt){
             
             for (int i = 0; i < objects.size(); i++) {
                 SceneObject *o = objects[i];
+                if (o == ob) continue;
                 if (o->shape->IntersectsRay(*surfaceLightRay)) {
                     free(surfaceLightRay);
-                    printf("-----------------bob\n");
                     return true;
                 }
             }
@@ -35,15 +49,14 @@ bool Scene::Occluded(SceneObject o, RayIntersection surface_pt){
             free(surfaceLightRay);
             
         } else if (typeid(DirectionalLight) == typeid(*l)) {
-            printf("-----------------directional light\n");
             DirectionalLight *light = (DirectionalLight *)l;
             OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt + *(light->direction));
             
             for (int i = 0; i < objects.size(); i++) {
                 SceneObject *o = objects[i];
+                if (o == ob) continue;
                 if (o->shape->IntersectsRay(*surfaceLightRay)) {
                     free(surfaceLightRay);
-                    printf("-----------------bob\n");
                     return true;
                 }
             }
@@ -80,15 +93,12 @@ void Scene::Parse(std::string sceneFilename)
 	char line[1024];
 	while (!sceneFile.eof())
 	{
-        printf(" in the while loop\n");
 		sceneFile.getline(line, 1023);
-        printf(" %s\n", line);
 
 		std::stringstream ss;
 		ss.str(line);
 		std::string command;
 		ss >> command;
-        printf(" %s\n", line);
 
 		if (command == "Camera")
 		{

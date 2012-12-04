@@ -11,6 +11,7 @@
 
 #include "OcclusionRay.h"
 OcclusionRay::OcclusionRay(STVector3 s, STVector3 end ){
+    printf("TODO: Set Shadow bias\n");
     start = s;
     direction = end - s;
     direction.Normalize();
