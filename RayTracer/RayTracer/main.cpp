@@ -44,13 +44,7 @@ void GenerateImage() {
             }
             
             if (min_intersect) { // if camera can see it
-                STColor3f calculatedColor;
-                if(scene->Occluded(min_object, *min_intersect)) {
-                  calculatedColor = scene->CalcAmbient(*min_intersect,min_object->material,viewing_ray);
-                } else {
-                  calculatedColor = scene->CalcColor(*min_intersect,min_object->material,viewing_ray);
-                }
-//                calculatedColor = STColor3f(1.0, 0.0 , 0.0);
+                STColor3f calculatedColor = scene->CalcColor(*min_intersect,viewing_ray, min_object);
                 
                 scene->imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             }
