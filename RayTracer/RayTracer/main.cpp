@@ -31,7 +31,7 @@ void GenerateImage() {
                 Shape *s = (scene->shapes)[k];
                 RayIntersection *inter = s->IntersectsRay(*viewing_ray);
                 if (inter){
-                    float dist = inter->t;//abs((*intersectVect - world_pt_plane).Length());
+                    float dist = abs((inter->pt - world_pt_plane).Length());  /// maybe t
                     if (dist < min_dist || min_dist == -1) {
                         min_dist = dist;
                         min_shape = s;

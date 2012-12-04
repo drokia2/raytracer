@@ -18,7 +18,7 @@ class DirectionalLight: public Light
 {
 public:
 	DirectionalLight(const STVector3& dir, const STColor3f& col);
-    STColor3f sumComponenent(RayIntersection inter);
+    STColor3f sumComponent(RayIntersection inter);
 
 private:
     STVector3 *direction;

@@ -12,7 +12,7 @@ Light::Light(){
     
 }
 
-STColor3f Light::sumComponenent(RayIntersection inter){
+STColor3f Light::sumComponent(RayIntersection inter){
     printf(" TODO implement  light sum componenet in child class\n");
     return STColor3f(1.0, 0.0, 0.0);
 }

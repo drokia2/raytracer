@@ -8,11 +8,11 @@ STColor3f Scene::CalcColor(RayIntersection surface_inter){
     
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
-        calcColor = calcColor + l->sumComponenent(surface_inter);
+        calcColor = calcColor + l->sumComponent(surface_inter);
         
     }
     
-    return STColor3f(1.0, 0.0, 0.0);
+    return calcColor;
 }
 
 
