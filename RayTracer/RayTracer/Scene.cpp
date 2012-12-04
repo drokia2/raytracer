@@ -33,7 +33,7 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
-            if (o == ob) continue;
+//            if (o == ob) continue;
             if (o->shape->IntersectsRay(*surfaceLightRay)) {
                 free(surfaceLightRay);
                 return true;
@@ -48,7 +48,7 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
-            if (o == ob) continue;
+//            if (o == ob) continue;
             if (o->shape->IntersectsRay(*surfaceLightRay)) {
                 free(surfaceLightRay);
                 return true;
