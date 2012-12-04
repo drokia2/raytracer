@@ -10,7 +10,7 @@ class Ray
 {
 public:
     Ray();
-	Ray(STVector3 start, STVector3 end );
+	Ray(STVector3 start, STVector3 end);
     
     STVector3 *InterpolatedRay(float t);
     STVector3 direction;

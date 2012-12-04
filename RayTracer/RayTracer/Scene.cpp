@@ -68,41 +68,44 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
     return false;
 }
 
+bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint) {
+    float min_dist = -1;
+    bool hasIntersection = false;
+    for (int k=0;  k < objects.size(); k++) {
+        SceneObject *o = objects[k];
+        RayIntersection *inter = o->shape->IntersectsRay(*ray);
+        if (inter){
+            STVector3 worldPointPlane = ray->start + ray->direction;
+            float dist = abs((inter->pt - worldPointPlane).Length());  /// maybe t
+            if (dist < min_dist || min_dist == -1) {
+                min_dist = dist;
+                *intersectedObject = o;
+                *intersectionPoint = inter;
+                hasIntersection = true;
+            } else {
+                free(inter);
+            }
+        }
+    }
+    return hasIntersection;
+}
+
 void Scene::Render() {
-    // set width and height based on the fovy of the image
-    printf("generate image\n");
-    
-    
     for (int j = 0; j < imagePlane->GetHeight(); j++) {
         for (int i=0; i< imagePlane->GetWidth(); i++) {
             STVector2 pt_on_plane = STVector2(i, j);
             STVector3 world_pt_plane = imagePlane->ConvertToWorld(pt_on_plane);
             Ray *viewing_ray = camera->GetViewingRay(world_pt_plane);
-            SceneObject *min_object = NULL;
             
-            float min_dist = -1;
-            RayIntersection * min_intersect = NULL;
-            for (int k=0;  k < objects.size(); k++) {
-                SceneObject *o = objects[k];
-                RayIntersection *inter = o->shape->IntersectsRay(*viewing_ray);
-                if (inter){
-                    float dist = abs((inter->pt - world_pt_plane).Length());  /// maybe t
-                    if (dist < min_dist || min_dist == -1) {
-                        min_dist = dist;
-                        min_object = o;
-                        min_intersect = inter;
-                    } else {
-                        free(inter);
-                    }
-                }
-            }
+            //Intersection
+            SceneObject *intersectedObject = NULL;
+            RayIntersection *intersectionPoint = NULL;
             
-            if (min_intersect) { // if camera can see it
-                STColor3f calculatedColor = CalcColor(*min_intersect,viewing_ray, min_object);
+            if (Intersect(viewing_ray, &intersectedObject, &intersectionPoint)) {
+                STColor3f calculatedColor = CalcColor(*intersectionPoint,viewing_ray, intersectedObject);
                 
                 imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             }
-            // TODO iterate through all of the lights to figure out the shading
             
             free(viewing_ray);
             

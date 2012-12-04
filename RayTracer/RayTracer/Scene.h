@@ -52,6 +52,7 @@ private:
     
     STColor3f CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object);
     bool Occluded(SceneObject *o, RayIntersection surface_pt, Light *l);
+    bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint);
     Camera *camera;
     ImagePlane *imagePlane;
     Material *lastDeclaredMaterial;
