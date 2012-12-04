@@ -73,6 +73,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "ShadowTest1.txt"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "ShadowTest2.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

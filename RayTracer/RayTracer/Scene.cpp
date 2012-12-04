@@ -46,8 +46,9 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         free(surfaceLightRay);
         
     } else if (typeid(DirectionalLight) == typeid(*l)) {
+       // return false;
         DirectionalLight *light = (DirectionalLight *)l;
-        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt + *(light->direction));
+        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt - *(light->direction));
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
