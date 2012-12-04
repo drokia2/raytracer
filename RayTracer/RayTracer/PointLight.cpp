@@ -1,7 +1,5 @@
 #include "PointLight.h"
 
-STVector3 FindR(STVector3 normal, STVector3 lightSource);
-
 PointLight::PointLight(const STPoint3& loc,const STColor3f& c){
     color = new STColor3f(c);
     location = new STVector3(loc);
@@ -13,17 +11,7 @@ STColor3f PointLight::sumTerm(RayIntersection inter, Material *material, Ray *vi
     STVector3 view = -viewingRay->direction;
     
     STColor3f diffuse = material->diff * (*color) * fmax(0.0, STVector3::Dot(incomingLight, normal));
-    STColor3f specular = material->spec * (*color) * pow(fmax(0, STVector3::Dot(view, FindR(normal, incomingLight))), material->shine);
+    STColor3f specular = material->spec * (*color) * pow(fmax(0, STVector3::Dot(view, Utils::reflectVector(normal, incomingLight))), material->shine);
     
     return diffuse + specular;
-}
-
-#pragma mark - Privates
-
-STVector3 FindR(STVector3 normal, STVector3 lightSource) {
-    STVector3 x = STVector3::Dot(normal, lightSource) * normal;
-    STVector3 y = lightSource - x;
-    
-    STVector3 R =  y -x;
-    return R;
 }

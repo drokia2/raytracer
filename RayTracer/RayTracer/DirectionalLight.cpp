@@ -1,24 +1,19 @@
-//
-//  DirectionalLight.cpp
-//  RayTracer
-//
-//  Created by Adriana Diakite on 12/3/12.
-//  Copyright (c) 2012 Adriana Diakite. All rights reserved.
-//
-
 #include "DirectionalLight.h"
+
 DirectionalLight::DirectionalLight(const STVector3& dir,const STColor3f& c){
     color = new STColor3f(c);
     direction = new STVector3(dir);
 }
 
 STColor3f DirectionalLight::sumTerm(RayIntersection inter, Material *material, Ray *viewingRay){
-    printf(" TODO implement directional light sum componenet\n");
+    STVector3 incomingLight = *direction;
+    STVector3 normal = inter.ptNormal;
+    STVector3 view = -viewingRay->direction;
     
-//    float ks = 1.0;
-//    STVector3 sumComp = STVector3(0.0, 0.0, 0.0);
-//    sumComp = ks * *color * fmax(STVector3::Dot(, <#const STVector3 &right#>), 0.0);
+    STColor3f diffuse = material->diff * (*color) * fmax(0.0, STVector3::Dot(incomingLight, normal));
+    STColor3f specular = material->spec * (*color) * pow(fmax(0, STVector3::Dot(view, Utils::reflectVector(normal, incomingLight))), material->shine);
     
-    
-    return STColor3f(1.0, 0.0, 0.0);
+    return diffuse + specular;
 }
+
+

@@ -5,6 +5,7 @@
 #include "stgl.h"
 #include "st.h"
 #include "Light.h"
+#include "Utils.h"
 
 class PointLight: public Light
 {
