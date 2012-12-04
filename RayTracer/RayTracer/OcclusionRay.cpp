@@ -7,14 +7,12 @@
 //
 
 
-#define EPSILON .01
 
 #include "OcclusionRay.h"
-OcclusionRay::OcclusionRay(STVector3 s, STVector3 end ){
-    printf("TODO: Set Shadow bias\n");
+OcclusionRay::OcclusionRay(STVector3 s, STVector3 end, float ep){
     start = s;
     direction = end - s;
     direction.Normalize();
-    minT = EPSILON;
+    minT = ep;
     maxT = 1.0;
 }

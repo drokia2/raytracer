@@ -32,7 +32,7 @@ STColor3f Scene::CalcAmbient(RayIntersection surface_pt, Material *material, Ray
 bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
     if (typeid(PointLight) == typeid(*l)) {
         PointLight *light = (PointLight *)l;
-        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location));
+        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location), ep);
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
@@ -48,7 +48,7 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
     } else if (typeid(DirectionalLight) == typeid(*l)) {
        // return false;
         DirectionalLight *light = (DirectionalLight *)l;
-        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt - *(light->direction));
+        OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt - *(light->direction), ep);
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
@@ -254,6 +254,7 @@ void Scene::ParsedBounceDepth(int depth)
 
 void Scene::ParsedShadowBias(float bias)
 {
+    ep = bias;
     //	/** CS 148 TODO: Fill this in **/
 }
 

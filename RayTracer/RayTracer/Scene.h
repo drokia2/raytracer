@@ -35,6 +35,7 @@ public:
     std::vector<Shape *> shapes;
     std::vector<SceneObject *> objects;
     std::vector<Light *> lights;
+    float ep;
     
     //TODO: store the lights here
 
