@@ -16,6 +16,7 @@
 #include "RayIntersection.h"
 #include "Material.h"
 #include "SceneObject.h"
+#include "OcclusionRay.h"
 
 class Scene
 {
@@ -28,6 +29,7 @@ public:
     Camera *camera;
     ImagePlane *imagePlane;
     Material *lastDeclaredMaterial;
+    bool Occluded(SceneObject o, RayIntersection surface_pt);
     
     std::vector<Shape *> shapes;
     std::vector<SceneObject *> objects;

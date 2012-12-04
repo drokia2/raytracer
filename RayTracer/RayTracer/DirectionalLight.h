@@ -12,9 +12,10 @@ class DirectionalLight: public Light
 public:
 	DirectionalLight(const STVector3& dir, const STColor3f& col);
     STColor3f sumTerm(RayIntersection inter, Material *material, Ray *viewingRay);
-
-private:
     STVector3 *direction;
+    
+private:
+
 };
     
     

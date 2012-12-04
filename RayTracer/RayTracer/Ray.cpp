@@ -1,5 +1,9 @@
 #include "Ray.h"
 
+Ray::Ray(){
+    
+}
+
 Ray::Ray(STVector3 s, STVector3 end )
 {
     start = s;

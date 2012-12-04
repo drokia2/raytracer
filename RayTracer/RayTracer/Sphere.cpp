@@ -35,19 +35,26 @@ RayIntersection *Sphere::IntersectsRay(Ray r) {
     } else {
         float t1 = (-b - sqrt(discriminant)) / (2*a);
         float t2 = (-b + sqrt(discriminant)) / (2*a);
-        if (r.invalidT(t1) && !r.invalidT(t2)){
+        
+        if (r.invalidT(t1) && !r.invalidT(t2)) {
             STVector3 normal = CalcNormal(*(r.InterpolatedRay(t2)));
             RayIntersection *rt = new RayIntersection(t2, *(r.InterpolatedRay(t2)), normal);
             return rt;
         }
+        
         if (!r.invalidT(t1) && r.invalidT(t2)) {
             STVector3 normal = CalcNormal(*(r.InterpolatedRay(t1)));
             RayIntersection *rt = new RayIntersection(t1, *(r.InterpolatedRay(t1)), normal);
             return rt;
         }
-        STVector3 normal = CalcNormal(*(r.InterpolatedRay(fmin(t1,t2))));
-        RayIntersection *rt = new RayIntersection(fmin(t1,t2), *(r.InterpolatedRay(fmin(t1,t2))), normal);
+        
+        if (r.invalidT(t1) && r.invalidT(t2)) {
+            return NULL;
+        }
+        
+        STVector3 *ray = r.InterpolatedRay(fmin(t1,t2));
+        STVector3 normal = CalcNormal(*ray);
+        RayIntersection *rt = new RayIntersection(fmin(t1,t2), *ray, normal);
         return rt;
-
     }
 }

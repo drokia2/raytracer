@@ -14,6 +14,49 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Material *material, Ray *
     return calcColor;
 }
 
+bool Scene::Occluded(SceneObject o, RayIntersection surface_pt){
+    
+    for (int i = 0; i < lights.size(); i++) {
+        Light *l = lights[i];
+        
+        if (typeid(PointLight) == typeid(*l)) {
+//            printf("-----------------point light\n");
+            PointLight *light = (PointLight *)l;
+            OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location));
+            
+            for (int i = 0; i < objects.size(); i++) {
+                printf(" I'm in\n");
+                SceneObject *o = objects[i];
+                if (o->shape->IntersectsRay(*surfaceLightRay)) {
+                    free(surfaceLightRay);
+                    printf("-----------------bob\n");
+                    return true;
+                }
+            }
+            
+            free(surfaceLightRay);
+            
+        } else if (typeid(DirectionalLight) == typeid(*l)) {
+            printf("-----------------directional light\n");
+            DirectionalLight *light = (DirectionalLight *)l;
+            OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt,surface_pt.pt + *(light->direction));
+            
+            for (int i = 0; i < objects.size(); i++) {
+                SceneObject *o = objects[i];
+                if (o->shape->IntersectsRay(*surfaceLightRay)) {
+                    free(surfaceLightRay);
+                    printf("-----------------bob\n");
+                    return true;
+                }
+            }
+            
+            free(surfaceLightRay);
+        }
+    }
+    
+    return false;
+}
+
 
 
 

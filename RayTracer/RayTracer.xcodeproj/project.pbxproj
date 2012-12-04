@@ -26,6 +26,7 @@
 		3FE6A422166D7C2B00004609 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A420166D7C2A00004609 /* Material.cpp */; };
 		3FE6A425166D7F2100004609 /* SceneObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A423166D7F2000004609 /* SceneObject.cpp */; };
 		3FE6A428166D8CC700004609 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A426166D8CC600004609 /* Utils.cpp */; };
+		3FE6A42B166DD71C00004609 /* OcclusionRay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A429166DD71B00004609 /* OcclusionRay.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		3FE6A424166D7F2000004609 /* SceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneObject.h; sourceTree = "<group>"; };
 		3FE6A426166D8CC600004609 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		3FE6A427166D8CC700004609 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		3FE6A429166DD71B00004609 /* OcclusionRay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OcclusionRay.cpp; sourceTree = "<group>"; };
+		3FE6A42A166DD71B00004609 /* OcclusionRay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OcclusionRay.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 				3FE6A424166D7F2000004609 /* SceneObject.h */,
 				3FE6A426166D8CC600004609 /* Utils.cpp */,
 				3FE6A427166D8CC700004609 /* Utils.h */,
+				3FE6A429166DD71B00004609 /* OcclusionRay.cpp */,
+				3FE6A42A166DD71B00004609 /* OcclusionRay.h */,
 			);
 			path = RayTracer;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				3FE6A422166D7C2B00004609 /* Material.cpp in Sources */,
 				3FE6A425166D7F2100004609 /* SceneObject.cpp in Sources */,
 				3FE6A428166D8CC700004609 /* Utils.cpp in Sources */,
+				3FE6A42B166DD71C00004609 /* OcclusionRay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

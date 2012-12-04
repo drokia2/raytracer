@@ -9,6 +9,7 @@
 class Ray
 {
 public:
+    Ray();
 	Ray(STVector3 start, STVector3 end );
     
     STVector3 *InterpolatedRay(float t);
@@ -22,7 +23,7 @@ public:
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
     
     // gen viewing rays    
-private:
+protected:
     
     
     
