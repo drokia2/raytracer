@@ -3,13 +3,12 @@
 #include <sstream>
 
 
-STColor3f Scene::CalcColor(RayIntersection surface_inter){
+STColor3f Scene::CalcColor(RayIntersection surface_pt, Material *material, Ray *viewingRay) {
     STColor3f calcColor = STColor3f(0, 0, 0);
     
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
-        calcColor = calcColor + l->sumComponent(surface_inter);
-        
+        calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
     }
     
     return calcColor;
@@ -239,36 +238,49 @@ void Scene::ParsedSphere(const STPoint3& center, float radius)
 {
     Sphere *s = new Sphere(radius, center);
     shapes.push_back(s);
+    
+    SceneObject *o = new SceneObject(s,lastDeclaredMaterial);
+    objects.push_back(o);
 }
 
 void Scene::ParsedTriangle(const STPoint3& v1, const STPoint3& v2, const STPoint3& v3)
 {
     Triangle *t = new Triangle(v1, v2, v3);
     shapes.push_back(t);
+    
+    SceneObject *o = new SceneObject(t,lastDeclaredMaterial);
+    objects.push_back(o);
 }
 
 void Scene::ParsedAmbientLight(const STColor3f& col)
 {
     AmbientLight *a = new AmbientLight(col);
     lights.push_back(a);
-//	/** CS 148 TODO: Fill this in **/
 }
 
 void Scene::ParsedPointLight(const STPoint3& loc, const STColor3f& col)
 {
     PointLight *p = new PointLight(loc, col);
     lights.push_back(p);
-//	/** CS 148 TODO: Fill this in **/
 }
 
 void Scene::ParsedDirectionalLight(const STVector3& dir, const STColor3f& col)
 {
     DirectionalLight *d = new DirectionalLight(dir, col);
     lights.push_back(d);
-	/** CS 148 TODO: Fill this in **/
 }
 
 void Scene::ParsedMaterial(const STColor3f& amb, const STColor3f& diff, const STColor3f& spec, const STColor3f& mirr, float shine)
 {
-	/** CS 148 TODO: Fill this in **/
+    lastDeclaredMaterial = new Material(amb,diff,spec,mirr,shine);
 }
+
+
+
+
+
+
+
+
+
+

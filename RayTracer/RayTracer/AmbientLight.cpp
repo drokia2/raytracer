@@ -12,11 +12,6 @@ AmbientLight::AmbientLight(const STColor3f& c){
     color = new STColor3f(c);
 }
 
-STColor3f AmbientLight::sumComponent(RayIntersection inter){
-    printf(" TODO implement ambient light sum componenet\n");
-//    float ka = 1.0; // dont know what k is 
-//    STColor3f sumComp = STColor3f(0.0, 0.0, 0.0);
-//    sumComp = ka * *color;
-//    return sumComp;
-    return STColor3f(1.0, 0.0, 0.0);
+STColor3f AmbientLight::sumTerm(RayIntersection inter, Material *material, Ray *viewingRay){
+    return material->amb * (*color);
 }

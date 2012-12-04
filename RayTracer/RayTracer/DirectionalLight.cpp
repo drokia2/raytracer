@@ -12,7 +12,7 @@ DirectionalLight::DirectionalLight(const STVector3& dir,const STColor3f& c){
     direction = new STVector3(dir);
 }
 
-STColor3f DirectionalLight::sumComponent(RayIntersection inter){
+STColor3f DirectionalLight::sumTerm(RayIntersection inter, Material *material, Ray *viewingRay){
     printf(" TODO implement directional light sum componenet\n");
     
 //    float ks = 1.0;

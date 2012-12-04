@@ -13,6 +13,8 @@
 #include "stgl.h"
 #include "st.h"
 #include "RayIntersection.h"
+#include "Material.h"
+#include "Ray.h"
 
 class Light
 {
@@ -20,7 +22,7 @@ public:
 	Light();
     
     STVector3 *SurfaceToLightDirection(STVector3 surfacePoint);
-    virtual STColor3f sumComponent(RayIntersection inter) = 0;
+    virtual STColor3f sumTerm(RayIntersection inter, Material *material, Ray *viewingRay) = 0;
     
 protected:
     STColor3f *color;

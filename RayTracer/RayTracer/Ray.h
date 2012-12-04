@@ -1,11 +1,3 @@
-//
-//  Ray.h
-//  RayTracer
-//
-//  Created by Adriana Diakite on 12/1/12.
-//  Copyright (c) 2012 Adriana Diakite. All rights reserved.
-//
-
 #ifndef __RayTracer__Ray__
 #define __RayTracer__Ray__
 

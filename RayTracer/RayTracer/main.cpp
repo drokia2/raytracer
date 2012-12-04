@@ -24,24 +24,25 @@ void GenerateImage() {
             STVector2 pt_on_plane = STVector2(i, j);
             STVector3 world_pt_plane = scene->imagePlane->ConvertToWorld(pt_on_plane);
             Ray *viewing_ray = scene->camera->GetViewingRay(world_pt_plane);
-            Shape *min_shape = NULL;
+            SceneObject *min_object = NULL;
+            
             float min_dist = -1;
             RayIntersection * min_intersect = NULL;
-            for (int k=0;  k < scene->shapes.size(); k++) {
-                Shape *s = (scene->shapes)[k];
-                RayIntersection *inter = s->IntersectsRay(*viewing_ray);
+            for (int k=0;  k < scene->objects.size(); k++) {
+                SceneObject *o = scene->objects[k];
+                RayIntersection *inter = o->shape->IntersectsRay(*viewing_ray);
                 if (inter){
                     float dist = abs((inter->pt - world_pt_plane).Length());  /// maybe t
                     if (dist < min_dist || min_dist == -1) {
                         min_dist = dist;
-                        min_shape = s;
+                        min_object = o;
                         min_intersect = inter;
                     }
                 }
             }
             
             if (min_intersect) { // if camera can see it
-                STColor3f calculatedColor = scene->CalcColor(*min_intersect);
+                STColor3f calculatedColor = scene->CalcColor(*min_intersect,min_object->material,viewing_ray);
                 scene->imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             }
             // TODO iterate through all of the lights to figure out the shading

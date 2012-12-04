@@ -14,7 +14,8 @@
 #include "DirectionalLight.h"
 #include "PointLight.h"
 #include "RayIntersection.h"
-
+#include "Material.h"
+#include "SceneObject.h"
 
 class Scene
 {
@@ -22,13 +23,16 @@ public:
 	Scene(std::string sceneFilename);
 
 	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
-    STColor3f CalcColor(RayIntersection surface_pt);
+    STColor3f CalcColor(RayIntersection surface_pt, Material *material, Ray *viewingRay);
     
     Camera *camera;
     ImagePlane *imagePlane;
+    Material *lastDeclaredMaterial;
+    
     std::vector<Shape *> shapes;
+    std::vector<SceneObject *> objects;
     std::vector<Light *> lights;
-
+    
     //TODO: store the lights here
 
 

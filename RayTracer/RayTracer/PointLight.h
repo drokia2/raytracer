@@ -1,11 +1,3 @@
-//
-//  PointLight.h
-//  RayTracer
-//
-//  Created by Adriana Diakite on 12/3/12.
-//  Copyright (c) 2012 Adriana Diakite. All rights reserved.
-//
-
 #ifndef __RayTracer__PointLight__
 #define __RayTracer__PointLight__
 
@@ -18,7 +10,7 @@ class PointLight: public Light
 {
 public:
 	PointLight(const STPoint3& loc,const STColor3f& c);
-    STColor3f sumComponent(RayIntersection inter);
+    STColor3f sumTerm(RayIntersection inter, Material *material, Ray *viewingRay);
 
 private:
     STVector3 *location;
