@@ -19,7 +19,8 @@ STVector3 Triangle::CalcNormal(STVector3 surface_pt){
     STVector3 leg1 = v2 -v1;
     STVector3 leg2 = v3 -v1;
     STVector3 normal = STVector3::Cross(leg1, leg2);
-    return normal;
+    normal.Normalize();
+    return -normal;
 }
 
 

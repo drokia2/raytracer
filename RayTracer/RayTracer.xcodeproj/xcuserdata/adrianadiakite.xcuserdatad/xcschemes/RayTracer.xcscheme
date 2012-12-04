@@ -64,8 +64,12 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "SphereShadingTest1.txt"
+            argument = "TriangleShadingTest.txt"
             isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "SphereShadingTest1.txt"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/adrianadiakite/Documents/workspace/from_scratch/RayTracer/exampleScenes/TriangleTest.txt"

@@ -6,7 +6,8 @@ DirectionalLight::DirectionalLight(const STVector3& dir,const STColor3f& c){
 }
 
 STColor3f DirectionalLight::sumTerm(RayIntersection inter, Material *material, Ray *viewingRay){
-    STVector3 incomingLight = *direction;
+    STVector3 incomingLight = -*direction;
+    incomingLight.Normalize();
     STVector3 normal = inter.ptNormal;
     STVector3 view = -viewingRay->direction;
     
