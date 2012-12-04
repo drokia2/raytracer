@@ -64,6 +64,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "test.txt"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "SphereShadingTest2.txt"
             isEnabled = "NO">
          </CommandLineArgument>

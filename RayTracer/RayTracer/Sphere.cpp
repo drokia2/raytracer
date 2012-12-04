@@ -14,7 +14,9 @@ Sphere::Sphere(float r, const STPoint3& c){
 }
 
 STVector3 Sphere::CalcNormal(STVector3 surface_pt){
-    return surface_pt - center;
+    STVector3 v = surface_pt - center;
+    v.Normalize();
+    return v;
 }
 
 RayIntersection *Sphere::IntersectsRay(Ray r) {

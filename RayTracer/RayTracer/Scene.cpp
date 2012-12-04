@@ -30,7 +30,6 @@ STColor3f Scene::CalcAmbient(RayIntersection surface_pt, Material *material, Ray
 }
 
 bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
-        
     if (typeid(PointLight) == typeid(*l)) {
         PointLight *light = (PointLight *)l;
         OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location));

@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/main.cpp"
-         timestampString = "376299686.141708"
+         timestampString = "376338259.686942"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
          landmarkName = "GenerateImage()"
          landmarkType = "7">
       </FileBreakpoint>
@@ -40,6 +40,19 @@
          startingLineNumber = "30"
          endingLineNumber = "30"
          landmarkName = "ImagePlane::ImagePlane(Camera *cam)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "RayTracer/Scene.cpp"
+         timestampString = "376338625.80662"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "11"
+         endingLineNumber = "11"
+         landmarkName = "Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
