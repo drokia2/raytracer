@@ -1,7 +1,7 @@
 #include "Scene.h"
 #include <fstream>
 #include <sstream>
-
+#include <iostream.h>
 
 STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel) {
     
@@ -109,7 +109,7 @@ void Scene::Render() {
     }
     
     std::string str = imagePlane->outputFilename;
-    
+    cout << str << endl;
     imagePlane->image->Save("gen" +str);
     
     
@@ -270,7 +270,13 @@ void Scene::Parse(std::string sceneFilename)
 
 void Scene::BeganParsing()
 {
-    printf("BeganParsing");    
+    printf("BeganParsing");
+    
+    // push identity matrix on
+    // set current matrix to identity matrix
+    transStack.push(STTransform4::Identity());
+    curTransformation = STTransform4::Identity();
+
 }
 
 void Scene::FinishedParsing()
@@ -305,27 +311,37 @@ void Scene::ParsedShadowBias(float bias)
 
 void Scene::ParsedPushMatrix()
 {
-    //	/** CS 148 TODO: Fill this in **/
+    //push current matrix
+    transStack.push(curTransformation);
+    
 }
 
 void Scene::ParsedPopMatrix()
 {
-    //	/** CS 148 TODO: Fill this in **/
+    // pop top and set current matrix to top of the stack
+    transStack.pop();
+    curTransformation = transStack.top();
 }
 
 void Scene::ParsedRotate(float rx, float ry, float rz)
 {
-    //	/** CS 148 TODO: Fill this in **/
+    //multiply current matrix by rotation matrix
+    curTransformation = curTransformation * STTransform4::Rotation(rx, ry, rz);
+    
 }
 
 void Scene::ParsedScale(float sx, float sy, float sz)
 {
-    //	/** CS 148 TODO: Fill this in **/
+    // multiply current matrix by scale matrix
+    curTransformation = curTransformation * STTransform4::Scaling(sx, sy, sz);
+
 }
 
 void Scene::ParsedTranslate(float tx, float ty, float tz)
 {
-    //	/** CS 148 TODO: Fill this in **/
+    // multiply current matrix by translate matrix
+    curTransformation = curTransformation * STTransform4::Translation(tx, ty, tz);
+
 }
 
 void Scene::ParsedSphere(const STPoint3& center, float radius)
@@ -334,6 +350,7 @@ void Scene::ParsedSphere(const STPoint3& center, float radius)
     shapes.push_back(s);
     
     SceneObject *o = new SceneObject(s,lastDeclaredMaterial);
+    o->transMatrix = curTransformation;
     objects.push_back(o);
     
     printf("sphere parsed\n");
@@ -345,6 +362,7 @@ void Scene::ParsedTriangle(const STPoint3& v1, const STPoint3& v2, const STPoint
     shapes.push_back(t);
     
     SceneObject *o = new SceneObject(t,lastDeclaredMaterial);
+    o->transMatrix = curTransformation;
     objects.push_back(o);
 }
 

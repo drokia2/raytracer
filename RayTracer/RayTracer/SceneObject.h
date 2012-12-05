@@ -14,7 +14,8 @@ public:
     SceneObject(Shape *shape, Material *material);
     Shape *shape;
     Material *material;
-    
+    STTransform4 transMatrix;
+
 protected:
 
     

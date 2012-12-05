@@ -3,6 +3,7 @@
 
 #include "st.h"
 #include <vector>
+#include <stack>
 //#include "tracer.h"
 // I shouldn't have to reinclude this
 #include "ImagePlane.h"
@@ -50,7 +51,7 @@ private:
 
 	/** CS 148 TODO: Add instance vars to store camera, lights, objects, etc. **/
     
-    STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel);
+    STColor3f CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel);
     bool Occluded(SceneObject *o, RayIntersection surface_pt, Light *l);
     bool Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint);
     STColor3f reflectColor(Ray *bounceRay, int depthLevel, STColor3f currentColor, RayIntersection *intersectionPoint);
@@ -63,6 +64,10 @@ private:
     std::vector<Light *> lights;
     float epsilon;
     
+    std::stack<STTransform4> transStack;
+    STTransform4 curTransformation;
+
+
 };
 
 

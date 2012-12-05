@@ -31,6 +31,9 @@ RayIntersection *Sphere::IntersectsRay(Ray r) {
         return NULL;
     } else if (discriminant == 0.0) {
         float t = -b / (2*a);
+        if (r.invalidT(t)) {
+            return NULL;
+        }
         STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)), r);
         RayIntersection *rt = new RayIntersection(t, *(r.InterpolatedRay(t)), normal);
         return rt;
