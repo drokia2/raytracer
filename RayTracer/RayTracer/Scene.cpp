@@ -98,6 +98,9 @@ void Scene::Render() {
                 STColor3f calculatedColor = CalcColor(*intersectionPoint,viewing_ray, intersectedObject, 0);
                 
                 imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
+            } else {
+                imagePlane->image->SetPixel(i, j, STColor4ub(0, 0, 0, 255));
+
             }
             
             free(viewing_ray);
@@ -107,7 +110,7 @@ void Scene::Render() {
     
     std::string str = imagePlane->outputFilename;
     
-    imagePlane->image->Save("adriana.jpg");
+    imagePlane->image->Save("gen" +str);
     
     
 }

@@ -14,11 +14,15 @@ void usage()
 
 int main(int argc, const char * argv[])
 {
-    if (argc != 2)
-		usage();
-    string sceneFileName = argv[1];
-    Scene *scene = new Scene(sceneFileName);
-    scene->Render();
+
+    for (int i=1; i<argc; i++) {        
+        string sceneFileName = argv[i];
+        Scene *scene = new Scene(sceneFileName);
+        scene->Render();
+    }
+    
+    
+
     return 0;
 }
 

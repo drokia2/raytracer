@@ -60,7 +60,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/adrianadiakite/Documents/workspace/from_scratch/RayTracer/exampleScenes/SphereTest.txt"
+            argument = "SphereTest.txt"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
@@ -73,11 +73,11 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "CornellBox.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "SphereShadingTest2.txt"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "ShadowTest1.txt"
@@ -96,7 +96,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/adrianadiakite/Documents/workspace/from_scratch/RayTracer/exampleScenes/TriangleTest.txt"
+            argument = "TriangleTest.txt"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
