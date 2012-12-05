@@ -73,39 +73,33 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/Scene.cpp"
-         timestampString = "376382665.685827"
+         timestampString = "376386039.307777"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "331"
-         endingLineNumber = "331"
-         landmarkName = "Scene::ParsedRotate(float rx, float ry, float rz)"
-         landmarkType = "5">
+         endingLineNumber = "331">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/Scene.cpp"
-         timestampString = "376382665.685827"
+         timestampString = "376386039.307777"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "341"
-         endingLineNumber = "341"
-         landmarkName = "Scene::ParsedScale(float sx, float sy, float sz)"
-         landmarkType = "5">
+         endingLineNumber = "341">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/Scene.cpp"
-         timestampString = "376382665.685827"
+         timestampString = "376386039.307777"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "349"
-         endingLineNumber = "349"
-         landmarkName = "Scene::ParsedTranslate(float tx, float ty, float tz)"
-         landmarkType = "5">
+         endingLineNumber = "349">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

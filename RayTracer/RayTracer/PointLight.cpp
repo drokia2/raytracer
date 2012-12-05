@@ -9,6 +9,7 @@ STColor3f PointLight::sumTerm(RayIntersection inter, Material *material, Ray *vi
     STVector3 incomingLight = *location - inter.pt;
     incomingLight.Normalize();
     STVector3 normal = inter.ptNormal;
+    normal.Normalize();
     STVector3 view = -viewingRay->direction;
     
     STColor3f diffuse = material->diff * (*color) * fmax(0.0, STVector3::Dot(incomingLight, normal));

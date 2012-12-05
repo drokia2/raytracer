@@ -105,7 +105,7 @@ void Scene::Render() {
                 imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             } else {
                 
-               // imagePlane->image->SetPixel(i, j, STColor4ub(0, 0, 0, 255));
+               imagePlane->image->SetPixel(i, j, STColor4ub(0, 0, 0, 255));
 
             }
             
