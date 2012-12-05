@@ -10,8 +10,7 @@ Ray::Ray(STVector3 s, STVector3 e )
     direction = e - s;
     direction.Normalize();
     minT = 1;
-    maxT = 100000;
-    
+    maxT = 100000;    
 }
 
 Ray Ray::TransformRay(STTransform4 transMatrix){
