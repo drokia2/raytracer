@@ -27,6 +27,7 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
 }
 
 bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
+//    return false;
     if (typeid(PointLight) == typeid(*l)) {
         PointLight *light = (PointLight *)l;
         OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location), epsilon);
@@ -99,7 +100,8 @@ void Scene::Render() {
                 
                 imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             } else {
-                imagePlane->image->SetPixel(i, j, STColor4ub(0, 0, 0, 255));
+                
+               // imagePlane->image->SetPixel(i, j, STColor4ub(0, 0, 0, 255));
 
             }
             
@@ -275,7 +277,7 @@ void Scene::BeganParsing()
     // push identity matrix on
     // set current matrix to identity matrix
     transStack.push(STTransform4::Identity());
-    curTransformation = STTransform4::Identity();
+    curTransformation = transStack.top();
 
 }
 
@@ -326,21 +328,25 @@ void Scene::ParsedPopMatrix()
 void Scene::ParsedRotate(float rx, float ry, float rz)
 {
     //multiply current matrix by rotation matrix
-    curTransformation = curTransformation * STTransform4::Rotation(rx, ry, rz);
+    rx = (rx/360)* M_2_PI;
+    ry = (ry/360)* M_2_PI;
+    rz = (rz/360)* M_2_PI;
+    curTransformation =  STTransform4::Rotation(rx, ry, rz) * curTransformation ;
     
 }
 
 void Scene::ParsedScale(float sx, float sy, float sz)
 {
     // multiply current matrix by scale matrix
-    curTransformation = curTransformation * STTransform4::Scaling(sx, sy, sz);
+    curTransformation = STTransform4::Scaling(sx, sy, sz) * curTransformation ;
 
 }
 
 void Scene::ParsedTranslate(float tx, float ty, float tz)
 {
+    printf(" parsed translate\n\n\n");
     // multiply current matrix by translate matrix
-    curTransformation = curTransformation * STTransform4::Translation(tx, ty, tz);
+    curTransformation = STTransform4::Translation(tx, ty, tz) * curTransformation ;
 
 }
 

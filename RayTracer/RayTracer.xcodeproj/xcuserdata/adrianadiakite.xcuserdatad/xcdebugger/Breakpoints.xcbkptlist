@@ -46,13 +46,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "RayTracer/Ray.cpp"
-         timestampString = "376364126.244754"
+         filePath = "RayTracer/Sphere.cpp"
+         timestampString = "376374101.063685"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "22"
-         endingLineNumber = "22"
-         landmarkName = "Ray::TransformRay(STTransform4 transMatrix)"
+         startingLineNumber = "35"
+         endingLineNumber = "35"
+         landmarkName = "Sphere::IntersectsRay(Ray r, STTransform4 transMatrix)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/Sphere.cpp"
-         timestampString = "376364630.176336"
+         timestampString = "376374551.724671"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
          landmarkName = "Sphere::IntersectsRay(Ray r, STTransform4 transMatrix)"
          landmarkType = "5">
       </FileBreakpoint>

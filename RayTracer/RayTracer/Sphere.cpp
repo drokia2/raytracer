@@ -36,8 +36,12 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
             return NULL;
         }
         //TODO: transform back to world coordinates
-        STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)), r);
-        RayIntersection *rt = new RayIntersection(t, *(r.InterpolatedRay(t)), normal);
+        
+        STVector3 interRay = (*(r.InterpolatedRay(t)));
+        STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
+        
+        STVector3 normal = transMatrix.Inverse().Transpose() *CalcNormal(STVector3(inter_pt), r);
+        RayIntersection *rt = new RayIntersection(t, STVector3(inter_pt), normal);
         return rt;
     } else {
         float t1 = (-b - sqrt(discriminant)) / (2*a);
@@ -45,18 +49,21 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
         
         if (r.invalidT(t1) && !r.invalidT(t2)) {
             //TODO: transform back to world coordinates
-
-            STVector3 ray = transMatrix * (*(r.InterpolatedRay(t2)));
-            STVector3 normal = transMatrix.Inverse().Transpose() *CalcNormal(ray, r);
-            RayIntersection *rt = new RayIntersection(t2, ray, normal);
+            STVector3 interRay = (*(r.InterpolatedRay(t2)));
+            STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
+            
+            STVector3 normal = transMatrix.Inverse().Transpose() *CalcNormal(STVector3(inter_pt), r);
+            RayIntersection *rt = new RayIntersection(t2, STVector3(inter_pt), normal);
             return rt;
         }
         
         if (!r.invalidT(t1) && r.invalidT(t2)) {
             // transform back to world coordinates
-            STVector3 ray = transMatrix * (*(r.InterpolatedRay(t1)));
-            STVector3 normal = transMatrix.Inverse().Transpose() *CalcNormal(ray, r);
-            RayIntersection *rt = new RayIntersection(t1, ray, normal);
+            STVector3 interRay = (*(r.InterpolatedRay(t1)));
+            STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
+
+            STVector3 normal = transMatrix.Inverse().Transpose() *CalcNormal(STVector3(inter_pt), r);
+            RayIntersection *rt = new RayIntersection(t1, STVector3(inter_pt), normal);
             return rt;
         }
         
@@ -64,10 +71,13 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
             return NULL;
         }
         //transform back to world coordinates
+        STVector3 interRay = (*(r.InterpolatedRay(fmin(t1,t2))));
+        STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
 
-        STVector3 ray = transMatrix * (*(r.InterpolatedRay(fmin(t1,t2))));
-        STVector3 normal = transMatrix.Inverse().Transpose() * CalcNormal(ray, r);
-        RayIntersection *rt = new RayIntersection(fmin(t1,t2), ray, normal);
+        STVector3 normal = transMatrix.Inverse().Transpose() * CalcNormal(STVector3(inter_pt), r);
+        
+        
+        RayIntersection *rt = new RayIntersection(fmin(t1,t2), STVector3(inter_pt), normal);
         return rt;
     }
 }

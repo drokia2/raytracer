@@ -17,8 +17,8 @@ Ray::Ray(STVector3 s, STVector3 e )
 
 Ray Ray::TransformRay(STTransform4 transMatrix){
     STTransform4 invTransMatrix = transMatrix.Inverse();
-    STVector3 startTransformed = invTransMatrix * start;
-    STVector3 endTransformed = invTransMatrix * end;
+    STVector3 startTransformed = STVector3(invTransMatrix * STPoint3(start));
+    STVector3 endTransformed = STVector3(invTransMatrix * STPoint3(end));
     Ray newRay = Ray(startTransformed, endTransformed);
     return newRay;
 }
