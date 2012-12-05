@@ -328,17 +328,17 @@ void Scene::ParsedPopMatrix()
 void Scene::ParsedRotate(float rx, float ry, float rz)
 {
     //multiply current matrix by rotation matrix
-    rx = (rx/360)* M_2_PI;
-    ry = (ry/360)* M_2_PI;
-    rz = (rz/360)* M_2_PI;
-    curTransformation =  STTransform4::Rotation(rx, ry, rz) * curTransformation ;
+    rx = (rx/360) * 2 * M_PI;
+    ry = (ry/360) * 2 * M_PI;
+    rz = (rz/360) * 2 * M_PI;
+    curTransformation =   curTransformation * STTransform4::Rotation(rx, ry, rz) ;
     
 }
 
 void Scene::ParsedScale(float sx, float sy, float sz)
 {
     // multiply current matrix by scale matrix
-    curTransformation = STTransform4::Scaling(sx, sy, sz) * curTransformation ;
+    curTransformation =  curTransformation * STTransform4::Scaling (sx, sy, sz);
 
 }
 
@@ -346,7 +346,7 @@ void Scene::ParsedTranslate(float tx, float ty, float tz)
 {
     printf(" parsed translate\n\n\n");
     // multiply current matrix by translate matrix
-    curTransformation = STTransform4::Translation(tx, ty, tz) * curTransformation ;
+    curTransformation =  curTransformation *STTransform4::Translation(tx, ty, tz) ;
 
 }
 

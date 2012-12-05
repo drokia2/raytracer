@@ -8,7 +8,6 @@ Ray::Ray(STVector3 s, STVector3 e )
 {
     start = s;
     direction = e - s;
-    end = e;
     direction.Normalize();
     minT = 1;
     maxT = 100000;
@@ -18,8 +17,8 @@ Ray::Ray(STVector3 s, STVector3 e )
 Ray Ray::TransformRay(STTransform4 transMatrix){
     STTransform4 invTransMatrix = transMatrix.Inverse();
     STVector3 startTransformed = STVector3(invTransMatrix * STPoint3(start));
-    STVector3 endTransformed = STVector3(invTransMatrix * STPoint3(end));
-    Ray newRay = Ray(startTransformed, endTransformed);
+    STVector3 dirTransformed = invTransMatrix * direction;
+    Ray newRay = Ray(startTransformed,  startTransformed + dirTransformed);
     return newRay;
 }
 
