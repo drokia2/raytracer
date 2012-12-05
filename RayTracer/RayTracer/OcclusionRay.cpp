@@ -12,7 +12,8 @@
 OcclusionRay::OcclusionRay(STVector3 s, STVector3 end, float ep){
     start = s;
     direction = end - s;
+    float l = direction.Length();
     direction.Normalize();
     minT = ep;
-    maxT = 1.0;
+    maxT = l;
 }
