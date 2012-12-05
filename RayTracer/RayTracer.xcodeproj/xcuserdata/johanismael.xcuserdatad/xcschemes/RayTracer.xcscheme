@@ -71,7 +71,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/johanismael/Dropbox/Stanford\ Autumn\ 2012/Classes/CS148/Assignment\ 9/raytracer/RayTracer/exampleScenes/TransformationTest.txt"
+            argument = "/Users/johanismael/Dropbox/Stanford\ Autumn\ 2012/Classes/CS148/Assignment\ 9/raytracer/RayTracer/exampleScenes/TransformStackTest.txt"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

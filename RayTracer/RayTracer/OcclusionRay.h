@@ -16,7 +16,7 @@ class OcclusionRay: public Ray
 {
 public:
 	OcclusionRay(STVector3 start, STVector3 end, float ep );
-    
+    OcclusionRay TransformRay(STTransform4 transMatrix);
 
     
     
