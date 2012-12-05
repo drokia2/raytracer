@@ -34,7 +34,7 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
 //            if (o == ob) continue;
-            if (o->shape->IntersectsRay(*surfaceLightRay)) {
+            if (o->shape->IntersectsRay(*surfaceLightRay, o->transMatrix)) {
                 free(surfaceLightRay);
                 return true;
             }
@@ -49,7 +49,7 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
 //            if (o == ob) continue;
-            if (o->shape->IntersectsRay(*surfaceLightRay)) {
+            if (o->shape->IntersectsRay(*surfaceLightRay, o->transMatrix)) {
                 free(surfaceLightRay);
                 return true;
             }
@@ -66,7 +66,7 @@ bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection
     bool hasIntersection = false;
     for (int k=0;  k < objects.size(); k++) {
         SceneObject *o = objects[k];
-        RayIntersection *inter = o->shape->IntersectsRay(*ray);
+        RayIntersection *inter = o->shape->IntersectsRay(*ray, o->transMatrix);
         if (inter){
             STVector3 worldPointPlane = ray->start + ray->direction;
             float dist = abs((inter->pt - worldPointPlane).Length());  /// maybe t

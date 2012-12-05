@@ -13,8 +13,10 @@ public:
 	Ray(STVector3 start, STVector3 end);
     
     STVector3 *InterpolatedRay(float t);
+    Ray TransformRay(STTransform4 transMatrix);
     STVector3 direction;
     STVector3 start;
+    STVector3 end;
 
     bool invalidT(float t);
 

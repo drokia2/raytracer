@@ -20,7 +20,7 @@ class Sphere: public Shape
 public:
 	Sphere(float r,const STPoint3& c);
     
-    RayIntersection * IntersectsRay(Ray r);
+    RayIntersection * IntersectsRay(Ray r, STTransform4 transMatrix);
     STVector3 CalcNormal(STVector3 surface_pt, Ray unused); // not normalized
 
     

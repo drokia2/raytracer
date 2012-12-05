@@ -19,7 +19,7 @@ class Shape
 public:
 	Shape();
     
-    virtual RayIntersection * IntersectsRay(Ray r)=0;
+    virtual RayIntersection * IntersectsRay(Ray r, STTransform4 transMatrix)=0;
     
     virtual STVector3 CalcNormal(STVector3 surface_pt, Ray r)=0;
     

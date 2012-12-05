@@ -31,7 +31,7 @@ float determinant(float a, float b, float c, float d, float e, float f, float g,
     return a*e*i + b*f*g + c*d*h - c*e*g - b*d*i - a*f*h;
 }
 
-RayIntersection * Triangle::IntersectsRay(Ray r) {
+RayIntersection * Triangle::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //    printf("TODO: implement Sphere::IntersectsRay\n");
     float a,b,c,d,e,f,g,h,i;
     //find determinant of a
