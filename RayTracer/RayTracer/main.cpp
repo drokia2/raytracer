@@ -20,8 +20,6 @@ int main(int argc, const char * argv[])
         Scene *scene = new Scene(sceneFileName);
         scene->Render();
     }
-    
-    
 
     return 0;
 }

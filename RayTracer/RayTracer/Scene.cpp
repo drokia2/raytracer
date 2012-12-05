@@ -34,7 +34,7 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
             OcclusionRay transformedRay = surfaceLightRay->TransformRay(o->transMatrix);
-            if (o->shape->IntersectsRay(*surfaceLightRay, o->transMatrix)) {
+            if (o->shape->IntersectsRay(transformedRay, o->transMatrix)) {
                 free(surfaceLightRay);
                 return true;
             }
