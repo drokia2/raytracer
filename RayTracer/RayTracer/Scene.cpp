@@ -10,6 +10,7 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
         if(Occluded(min_object, surface_pt, l) && (typeid(AmbientLight) != typeid(*l))) continue;
+        
         calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
     }
     
