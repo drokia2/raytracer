@@ -28,14 +28,12 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
 }
 
 bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
-//    return false;
     if (typeid(PointLight) == typeid(*l)) {
         PointLight *light = (PointLight *)l;
         OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location), epsilon);
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
-//            if (o == ob) continue;
             if (o->shape->IntersectsRay(*surfaceLightRay, o->transMatrix)) {
                 free(surfaceLightRay);
                 return true;
@@ -50,7 +48,6 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
-//            if (o == ob) continue;
             if (o->shape->IntersectsRay(*surfaceLightRay, o->transMatrix)) {
                 free(surfaceLightRay);
                 return true;
@@ -68,8 +65,14 @@ bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection
     bool hasIntersection = false;
     for (int k=0;  k < objects.size(); k++) {
         SceneObject *o = objects[k];
-        RayIntersection *inter = o->shape->IntersectsRay(*ray, o->transMatrix);
+        
+        Ray transformedRay = ray->TransformRay(o->transMatrix);        
+        RayIntersection *inter = o->shape->IntersectsRay(transformedRay, o->transMatrix);
         if (inter){
+            
+            //retransform point
+            inter = new RayIntersection(0.0, STVector3(o->transMatrix * STPoint3(inter->pt)), o->transMatrix.Inverse().Transpose() * inter->ptNormal);
+            
             STVector3 worldPointPlane = ray->start + ray->direction;
             float dist = abs((inter->pt - worldPointPlane).Length());  /// maybe t
             if (dist < min_dist || min_dist == -1) {
