@@ -47,25 +47,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RayTracer/Scene.cpp"
-         timestampString = "376431397.390281"
+         timestampString = "376437356.786296"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "105"
          endingLineNumber = "105"
          landmarkName = "Scene::Render()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "RayTracer/Scene.cpp"
-         timestampString = "376431709.328989"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
-         landmarkName = "Scene::Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

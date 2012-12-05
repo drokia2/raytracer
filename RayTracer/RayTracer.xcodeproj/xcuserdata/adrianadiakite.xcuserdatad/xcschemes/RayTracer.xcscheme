@@ -65,7 +65,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "TransformStackTest.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "RecursiveTest.txt"
@@ -77,7 +77,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "CornellBox.txt"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "TransformationTest.txt"

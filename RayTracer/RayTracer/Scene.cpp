@@ -101,7 +101,7 @@ void Scene::Render() {
             SceneObject *intersectedObject = NULL;
             RayIntersection *intersectionPoint = NULL;
             
-            if (i == 300 && j == 310) {
+            if (i == 350 && j == 240) {
                 printf("yo");
             }
             
@@ -114,10 +114,10 @@ void Scene::Render() {
                imagePlane->image->SetPixel(i, j, STColor4ub(0, 0, 0, 255));
 
             }
-//            if (i == 300 && j == 310) {
-//                imagePlane->image->SetPixel(i, j, STColor4ub(255, 0, 0, 255));
-//
-//            }
+            if (i == 350 && j == 240) {
+                imagePlane->image->SetPixel(i, j, STColor4ub(255, 0, 0, 255));
+
+            }
             
             free(viewing_ray);
             
