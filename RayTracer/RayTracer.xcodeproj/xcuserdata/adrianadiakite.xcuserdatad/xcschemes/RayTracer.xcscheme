@@ -64,6 +64,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "TransformStackTest.txt"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "RecursiveTest.txt"
             isEnabled = "NO">
          </CommandLineArgument>
@@ -77,7 +81,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "TransformationTest.txt"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "SphereShadingTest2.txt"
