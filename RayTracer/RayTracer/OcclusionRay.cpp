@@ -17,3 +17,11 @@ OcclusionRay::OcclusionRay(STVector3 s, STVector3 end, float ep){
     minT = ep;
     maxT = l;
 }
+
+OcclusionRay OcclusionRay::TransformRay(STTransform4 transMatrix) {
+    STTransform4 invTransMatrix = transMatrix.Inverse();
+    STVector3 startTransformed = STVector3(invTransMatrix * STPoint3(start));
+    STVector3 dirTransformed = invTransMatrix * direction;
+    OcclusionRay newRay = OcclusionRay(startTransformed,  startTransformed + dirTransformed, minT);
+    return newRay;
+}

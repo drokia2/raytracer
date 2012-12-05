@@ -38,10 +38,10 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
         //TODO: transform back to world coordinates
         
         STVector3 interRay = (*(r.InterpolatedRay(t)));
-        STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
+//        STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
         
-        STVector3 normal = transMatrix.Inverse().Transpose() *CalcNormal(STVector3(inter_pt), r);
-        RayIntersection *rt = new RayIntersection(t, STVector3(inter_pt), normal);
+        STVector3 normal = CalcNormal(interRay, r);
+        RayIntersection *rt = new RayIntersection(t, interRay, normal);
         return rt;
     } else {
         float t1 = (-b - sqrt(discriminant)) / (2*a);
