@@ -15,6 +15,7 @@
 #include "RayIntersection.h"
 #include "Material.h"
 #include "Ray.h"
+#include "SceneObject.h"
 
 class Light
 {

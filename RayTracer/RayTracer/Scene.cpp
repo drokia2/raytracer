@@ -10,7 +10,6 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
         if(Occluded(min_object, surface_pt, l) && (typeid(AmbientLight) != typeid(*l))) continue;
-        
         calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
     }
     
@@ -28,13 +27,15 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
 }
 
 bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
+//    return false;
     if (typeid(PointLight) == typeid(*l)) {
         PointLight *light = (PointLight *)l;
         OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location), epsilon);
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
-            if (o->shape->IntersectsRay(*surfaceLightRay, o->transMatrix)) {
+            Ray transformedRay = surfaceLightRay->TransformRay(o->transMatrix);
+            if (o->shape->IntersectsRay(transformedRay, o->transMatrix)) {
                 free(surfaceLightRay);
                 return true;
             }
@@ -48,7 +49,8 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
         
         for (int i = 0; i < objects.size(); i++) {
             SceneObject *o = objects[i];
-            if (o->shape->IntersectsRay(*surfaceLightRay, o->transMatrix)) {
+            Ray transformedRay = surfaceLightRay->TransformRay(o->transMatrix);
+            if (o->shape->IntersectsRay(transformedRay, o->transMatrix)) {
                 free(surfaceLightRay);
                 return true;
             }
@@ -99,6 +101,10 @@ void Scene::Render() {
             SceneObject *intersectedObject = NULL;
             RayIntersection *intersectionPoint = NULL;
             
+            if (i == 300 && j == 310) {
+                printf("yo");
+            }
+            
             if (Intersect(viewing_ray, &intersectedObject, &intersectionPoint)) {
                 STColor3f calculatedColor = CalcColor(*intersectionPoint,viewing_ray, intersectedObject, 0);
                 
@@ -108,6 +114,10 @@ void Scene::Render() {
                imagePlane->image->SetPixel(i, j, STColor4ub(0, 0, 0, 255));
 
             }
+//            if (i == 300 && j == 310) {
+//                imagePlane->image->SetPixel(i, j, STColor4ub(255, 0, 0, 255));
+//
+//            }
             
             free(viewing_ray);
             
@@ -325,8 +335,9 @@ void Scene::ParsedPushMatrix()
 void Scene::ParsedPopMatrix()
 {
     // pop top and set current matrix to top of the stack
-    transStack.pop();
     curTransformation = transStack.top();
+
+    transStack.pop();
 }
 
 void Scene::ParsedRotate(float rx, float ry, float rz)
@@ -384,7 +395,8 @@ void Scene::ParsedAmbientLight(const STColor3f& col)
 
 void Scene::ParsedPointLight(const STPoint3& loc, const STColor3f& col)
 {
-    PointLight *p = new PointLight(loc, col);
+    STPoint3 newLoc = curTransformation * loc;
+    PointLight *p = new PointLight(newLoc, col);
     lights.push_back(p);
 }
 
