@@ -12,7 +12,7 @@ Shape::Shape(){
     
 }
 
-RayIntersection * Shape::IntersectsRay(Ray r, STTransform4 transMatrix) {
+Intersection * Shape::IntersectsRay(Ray r, STTransform4 transMatrix) {
     printf("TODO: implement it in child class\n");
     
 //    pow(( A + t* D - C), 2) - pow(r, 2) = 0

@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iostream.h>
 
-STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel) {
+STColor3f Scene::CalcColor(Intersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel) {
     
     STColor3f calcColor = STColor3f(0, 0, 0);
     Material *material = min_object->material;
@@ -17,7 +17,7 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
     Ray *newBounceRay = new Ray(surface_pt.pt, surface_pt.pt - R);
     
     SceneObject *intersectedObject = NULL;
-    RayIntersection *intersectionPoint = NULL;
+    Intersection *intersectionPoint = NULL;
     
     if (!Intersect(newBounceRay, &intersectedObject, &intersectionPoint) || depthLevel == bounceDepth) {
         return calcColor;
@@ -26,7 +26,7 @@ STColor3f Scene::CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObj
     return calcColor + material->mirr * CalcColor(*intersectionPoint, newBounceRay, intersectedObject, depthLevel + 1);
 }
 
-bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
+bool Scene::Occluded(SceneObject *ob, Intersection surface_pt, Light *l) {
     if (typeid(PointLight) == typeid(*l)) {
         PointLight *light = (PointLight *)l;
         OcclusionRay *surfaceLightRay = new OcclusionRay(surface_pt.pt, *(light->location), epsilon);
@@ -61,19 +61,19 @@ bool Scene::Occluded(SceneObject *ob, RayIntersection surface_pt, Light *l) {
     return false;
 }
 
-bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint) {
+bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, Intersection **intersectionPoint) {
     float min_dist = -1;
     bool hasIntersection = false;
     for (int k=0;  k < objects.size(); k++) {
         SceneObject *o = objects[k];
         
         Ray transformedRay = ray->TransformRay(o->transMatrix);        
-        RayIntersection *inter = o->shape->IntersectsRay(transformedRay, o->transMatrix);
+        Intersection *inter = o->shape->IntersectsRay(transformedRay, o->transMatrix);
         
         if (inter){
             
             //retransform point
-            inter = new RayIntersection(0.0, STVector3(o->transMatrix * STPoint3(inter->pt)), o->transMatrix.Inverse().Transpose() * inter->ptNormal);
+            inter = new Intersection(0.0, STVector3(o->transMatrix * STPoint3(inter->pt)), o->transMatrix.Inverse().Transpose() * inter->ptNormal);
             
             STVector3 worldPointPlane = ray->start + ray->direction;
             float dist = abs((inter->pt - worldPointPlane).Length());  /// maybe t
@@ -99,7 +99,7 @@ void Scene::Render() {
             
             //Intersection
             SceneObject *intersectedObject = NULL;
-            RayIntersection *intersectionPoint = NULL;
+            Intersection *intersectionPoint = NULL;
             
             if (i == 350 && j == 240) {
                 printf("yo");

@@ -12,6 +12,6 @@ AmbientLight::AmbientLight(const STColor3f& c){
     color = new STColor3f(c);
 }
 
-STColor3f AmbientLight::sumTerm(RayIntersection inter, Material *material, Ray *viewingRay){
+STColor3f AmbientLight::sumTerm(Intersection inter, Material *material, Ray *viewingRay){
     return material->amb * (*color);
 }

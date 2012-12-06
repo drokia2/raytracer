@@ -19,7 +19,7 @@ STVector3 Sphere::CalcNormal(STVector3 surface_pt, Ray unused){
     return v;
 }
 
-RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
+Intersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //    r = r.TransformRay(transMatrix);
     float a, b, c;
     a = pow(r.direction.x,2) + pow(r.direction.y,2) + pow(r.direction.z,2);
@@ -41,7 +41,7 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //        STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
         
         STVector3 normal = CalcNormal(interRay, r);
-        RayIntersection *rt = new RayIntersection(t, interRay, normal);
+        Intersection *rt = new Intersection(t, interRay, normal);
         return rt;
     } else {
         float t1 = (-b - sqrt(discriminant)) / (2*a);
@@ -53,7 +53,7 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //            STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
             
             STVector3 normal = CalcNormal(interRay, r);
-            RayIntersection *rt = new RayIntersection(t2, interRay, normal);
+            Intersection *rt = new Intersection(t2, interRay, normal);
             return rt;
         }
         
@@ -63,7 +63,7 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //            STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
 
             STVector3 normal = CalcNormal(interRay, r);
-            RayIntersection *rt = new RayIntersection(t1, interRay, normal);
+            Intersection *rt = new Intersection(t1, interRay, normal);
             return rt;
         }
         
@@ -77,10 +77,10 @@ RayIntersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //        STVector3 normal = transMatrix.Inverse().Transpose() * CalcNormal(STVector3(inter_pt), r);
 //        
 //        
-//        RayIntersection *rt = new RayIntersection(fmin(t1,t2), STVector3(inter_pt), normal);
+//        Intersection *rt = new Intersection(fmin(t1,t2), STVector3(inter_pt), normal);
         
         STVector3 normal = CalcNormal(interRay, r);
-        RayIntersection *rt = new RayIntersection(fmin(t1,t2), interRay, normal);
+        Intersection *rt = new Intersection(fmin(t1,t2), interRay, normal);
         return rt;
     }
 }

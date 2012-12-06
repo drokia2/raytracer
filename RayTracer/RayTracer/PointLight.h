@@ -12,7 +12,7 @@ class PointLight: public Light
 {
 public:
 	PointLight(const STPoint3& loc,const STColor3f& c);
-    STColor3f sumTerm(RayIntersection inter, Material *material, Ray *viewingRay);
+    STColor3f sumTerm(Intersection inter, Material *material, Ray *viewingRay);
     STVector3 *location;
     
 private:

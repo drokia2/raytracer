@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FAA310416714B1300EBDA3B /* Intersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FAA310216714B1300EBDA3B /* Intersection.cpp */; };
 		3FE6A35D166AC2CE00004609 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A35C166AC2CE00004609 /* main.cpp */; };
 		3FE6A378166AC37700004609 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE6A377166AC37700004609 /* GLUT.framework */; };
 		3FE6A37A166AC37E00004609 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE6A379166AC37E00004609 /* OpenGL.framework */; };
@@ -59,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3FAA310216714B1300EBDA3B /* Intersection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Intersection.cpp; path = ../Intersection.cpp; sourceTree = "<group>"; };
+		3FAA310316714B1300EBDA3B /* Intersection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Intersection.h; path = ../Intersection.h; sourceTree = "<group>"; };
 		3FE6A358166AC2CE00004609 /* RayTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RayTracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE6A35C166AC2CE00004609 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3FE6A365166AC2E300004609 /* libst.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libst.xcodeproj; path = ../libst/xcode/libst.xcodeproj; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				3FE6A38C166AD0C600004609 /* ImagePlane.cpp */,
+				3FAA310216714B1300EBDA3B /* Intersection.cpp */,
+				3FAA310316714B1300EBDA3B /* Intersection.h */,
 				3FE6A38D166AD0C600004609 /* ImagePlane.h */,
 				3FE6A386166ACF2700004609 /* Camera.cpp */,
 				3FE6A387166ACF2700004609 /* Camera.h */,
@@ -264,6 +269,7 @@
 				3FE6A425166D7F2100004609 /* SceneObject.cpp in Sources */,
 				3FE6A428166D8CC700004609 /* Utils.cpp in Sources */,
 				3FE6A42B166DD71C00004609 /* OcclusionRay.cpp in Sources */,
+				3FAA310416714B1300EBDA3B /* Intersection.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

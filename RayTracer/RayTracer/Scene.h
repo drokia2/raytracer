@@ -14,7 +14,7 @@
 #include "AmbientLight.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
-#include "RayIntersection.h"
+#include "Intersection.h"
 #include "Material.h"
 #include "SceneObject.h"
 #include "OcclusionRay.h"
@@ -51,10 +51,10 @@ private:
 
 	/** CS 148 TODO: Add instance vars to store camera, lights, objects, etc. **/
     
-    STColor3f CalcColor(RayIntersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel);
-    bool Occluded(SceneObject *o, RayIntersection surface_pt, Light *l);
-    bool Intersect(Ray *ray, SceneObject **intersectedObject, RayIntersection **intersectionPoint);
-    STColor3f reflectColor(Ray *bounceRay, int depthLevel, STColor3f currentColor, RayIntersection *intersectionPoint);
+    STColor3f CalcColor(Intersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel);
+    bool Occluded(SceneObject *o, Intersection surface_pt, Light *l);
+    bool Intersect(Ray *ray, SceneObject **intersectedObject, Intersection **intersectionPoint);
+    STColor3f reflectColor(Ray *bounceRay, int depthLevel, STColor3f currentColor, Intersection *intersectionPoint);
     Camera *camera;
     ImagePlane *imagePlane;
     Material *lastDeclaredMaterial;

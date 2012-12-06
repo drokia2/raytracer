@@ -18,7 +18,7 @@ class AmbientLight: public Light
 {
 public:
 	AmbientLight(const STColor3f& c);
-    STColor3f sumTerm(RayIntersection inter, Material *material, Ray *viewingRay);
+    STColor3f sumTerm(Intersection inter, Material *material, Ray *viewingRay);
 
 private:
 };
