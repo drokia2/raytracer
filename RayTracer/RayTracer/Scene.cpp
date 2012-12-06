@@ -3,8 +3,8 @@
 #include <sstream>
 #include <iostream.h>
 
-STColor3f Scene::CalcColor(Intersection surfaceIntersection, Ray *viewingRay, SceneObject *min_object, int depthLevel) {
-    viewingRay = new Ray(surfaceIntersection.viewingRay);
+STColor3f Scene::CalcColor(Intersection surfaceIntersection, SceneObject *min_object, int depthLevel) {
+    Ray *viewingRay = new Ray(surfaceIntersection.incomingRay);
     STColor3f calcColor = STColor3f(0, 0, 0);
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
@@ -22,7 +22,7 @@ STColor3f Scene::CalcColor(Intersection surfaceIntersection, Ray *viewingRay, Sc
         return calcColor;
     }
     
-    return calcColor + min_object->material->mirr * CalcColor(*intersectionPoint, newBounceRay, intersectedObject, depthLevel + 1);
+    return calcColor + min_object->material->mirr * CalcColor(*intersectionPoint, intersectedObject, depthLevel + 1);
 }
 
 bool Scene::Occluded(SceneObject *ob, Intersection surface_pt, Light *l) {
@@ -105,7 +105,7 @@ void Scene::Render() {
             }
             
             if (Intersect(viewing_ray, &intersectedObject, &intersectionPoint)) {
-                STColor3f calculatedColor = CalcColor(*intersectionPoint,viewing_ray, intersectedObject, 0);
+                STColor3f calculatedColor = CalcColor(*intersectionPoint, intersectedObject, 0);
                 
                 imagePlane->image->SetPixel(i, j, STColor4ub(calculatedColor));
             } else {

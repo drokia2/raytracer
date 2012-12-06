@@ -12,6 +12,6 @@ Intersection::Intersection(float time, STVector3 intersect_pt, STVector3 n, Ray 
     t = time;
     pt = STVector3(intersect_pt);
     normal = n; //s.CalcNormal(intersect_pt);
-    viewingRay = vRay;
+    incomingRay = vRay;
     
 }

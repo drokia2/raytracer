@@ -49,7 +49,7 @@ private:
 	void ParsedMaterial(const STColor3f& amb, const STColor3f& diff, const STColor3f& spec, const STColor3f& mirr, float shine);
 
     
-    STColor3f CalcColor(Intersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel);
+    STColor3f CalcColor(Intersection surface_pt, SceneObject *min_object, int depthLevel);
     bool Occluded(SceneObject *o, Intersection surface_pt, Light *l);
     bool Intersect(Ray *ray, SceneObject **intersectedObject, Intersection **intersectionPoint);
     STColor3f reflectColor(Ray *bounceRay, int depthLevel, STColor3f currentColor, Intersection *intersectionPoint);
