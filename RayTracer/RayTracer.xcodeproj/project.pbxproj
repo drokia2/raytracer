@@ -23,7 +23,6 @@
 		3FE6A407166C980B00004609 /* AmbientLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A405166C980A00004609 /* AmbientLight.cpp */; };
 		3FE6A40A166C982200004609 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A408166C982100004609 /* PointLight.cpp */; };
 		3FE6A40D166C983400004609 /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A40B166C983400004609 /* DirectionalLight.cpp */; };
-		3FE6A41F166D69CA00004609 /* RayIntersection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A41D166D69CA00004609 /* RayIntersection.cpp */; };
 		3FE6A422166D7C2B00004609 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A420166D7C2A00004609 /* Material.cpp */; };
 		3FE6A425166D7F2100004609 /* SceneObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A423166D7F2000004609 /* SceneObject.cpp */; };
 		3FE6A428166D8CC700004609 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FE6A426166D8CC600004609 /* Utils.cpp */; };
@@ -89,8 +88,6 @@
 		3FE6A409166C982200004609 /* PointLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointLight.h; sourceTree = "<group>"; };
 		3FE6A40B166C983400004609 /* DirectionalLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DirectionalLight.cpp; sourceTree = "<group>"; };
 		3FE6A40C166C983400004609 /* DirectionalLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionalLight.h; sourceTree = "<group>"; };
-		3FE6A41D166D69CA00004609 /* RayIntersection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RayIntersection.cpp; sourceTree = "<group>"; };
-		3FE6A41E166D69CA00004609 /* RayIntersection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RayIntersection.h; sourceTree = "<group>"; };
 		3FE6A420166D7C2A00004609 /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
 		3FE6A421166D7C2B00004609 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		3FE6A423166D7F2000004609 /* SceneObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneObject.cpp; sourceTree = "<group>"; };
@@ -150,7 +147,6 @@
 				3FE6A35C166AC2CE00004609 /* main.cpp */,
 				3FE6A391166B305700004609 /* Shape.cpp */,
 				3FE6A392166B305700004609 /* Shape.h */,
-				3FE6A41E166D69CA00004609 /* RayIntersection.h */,
 				3FE6A394166B325900004609 /* Sphere.cpp */,
 				3FE6A395166B325900004609 /* Sphere.h */,
 				3FE6A397166B3C9600004609 /* Triangle.cpp */,
@@ -163,7 +159,6 @@
 				3FE6A409166C982200004609 /* PointLight.h */,
 				3FE6A40B166C983400004609 /* DirectionalLight.cpp */,
 				3FE6A40C166C983400004609 /* DirectionalLight.h */,
-				3FE6A41D166D69CA00004609 /* RayIntersection.cpp */,
 				3FE6A420166D7C2A00004609 /* Material.cpp */,
 				3FE6A421166D7C2B00004609 /* Material.h */,
 				3FE6A423166D7F2000004609 /* SceneObject.cpp */,
@@ -264,7 +259,6 @@
 				3FE6A407166C980B00004609 /* AmbientLight.cpp in Sources */,
 				3FE6A40A166C982200004609 /* PointLight.cpp in Sources */,
 				3FE6A40D166C983400004609 /* DirectionalLight.cpp in Sources */,
-				3FE6A41F166D69CA00004609 /* RayIntersection.cpp in Sources */,
 				3FE6A422166D7C2B00004609 /* Material.cpp in Sources */,
 				3FE6A425166D7F2100004609 /* SceneObject.cpp in Sources */,
 				3FE6A428166D8CC700004609 /* Utils.cpp in Sources */,
