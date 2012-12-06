@@ -112,6 +112,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FAA310616714CA000EBDA3B /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				3FAA310316714B1300EBDA3B /* Intersection.h */,
+				3FE6A406166C980B00004609 /* AmbientLight.h */,
+				3FE6A409166C982200004609 /* PointLight.h */,
+				3FE6A40C166C983400004609 /* DirectionalLight.h */,
+				3FE6A421166D7C2B00004609 /* Material.h */,
+				3FE6A424166D7F2000004609 /* SceneObject.h */,
+				3FE6A427166D8CC700004609 /* Utils.h */,
+				3FE6A42A166DD71B00004609 /* OcclusionRay.h */,
+				3FE6A392166B305700004609 /* Shape.h */,
+				3FE6A395166B325900004609 /* Sphere.h */,
+				3FE6A398166B3C9600004609 /* Triangle.h */,
+				3FE6A403166C975C00004609 /* Light.h */,
+				3FE6A38D166AD0C600004609 /* ImagePlane.h */,
+				3FE6A387166ACF2700004609 /* Camera.h */,
+				3FE6A38A166ACFF800004609 /* Ray.h */,
+				3FE6A37C166AC49800004609 /* Scene.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		3FAA310716714CB500EBDA3B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3FE6A386166ACF2700004609 /* Camera.cpp */,
+				3FE6A389166ACFF800004609 /* Ray.cpp */,
+				3FE6A37B166AC49800004609 /* Scene.cpp */,
+				3FE6A35C166AC2CE00004609 /* main.cpp */,
+				3FE6A391166B305700004609 /* Shape.cpp */,
+				3FE6A394166B325900004609 /* Sphere.cpp */,
+				3FE6A405166C980A00004609 /* AmbientLight.cpp */,
+				3FE6A408166C982100004609 /* PointLight.cpp */,
+				3FE6A40B166C983400004609 /* DirectionalLight.cpp */,
+				3FE6A420166D7C2A00004609 /* Material.cpp */,
+				3FE6A423166D7F2000004609 /* SceneObject.cpp */,
+				3FE6A426166D8CC600004609 /* Utils.cpp */,
+				3FE6A429166DD71B00004609 /* OcclusionRay.cpp */,
+				3FE6A397166B3C9600004609 /* Triangle.cpp */,
+				3FE6A402166C975C00004609 /* Light.cpp */,
+				3FE6A38C166AD0C600004609 /* ImagePlane.cpp */,
+				3FAA310216714B1300EBDA3B /* Intersection.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		3FE6A34D166AC2CE00004609 = {
 			isa = PBXGroup;
 			children = (
@@ -134,39 +181,8 @@
 		3FE6A35B166AC2CE00004609 /* RayTracer */ = {
 			isa = PBXGroup;
 			children = (
-				3FE6A38C166AD0C600004609 /* ImagePlane.cpp */,
-				3FAA310216714B1300EBDA3B /* Intersection.cpp */,
-				3FAA310316714B1300EBDA3B /* Intersection.h */,
-				3FE6A38D166AD0C600004609 /* ImagePlane.h */,
-				3FE6A386166ACF2700004609 /* Camera.cpp */,
-				3FE6A387166ACF2700004609 /* Camera.h */,
-				3FE6A389166ACFF800004609 /* Ray.cpp */,
-				3FE6A38A166ACFF800004609 /* Ray.h */,
-				3FE6A37B166AC49800004609 /* Scene.cpp */,
-				3FE6A37C166AC49800004609 /* Scene.h */,
-				3FE6A35C166AC2CE00004609 /* main.cpp */,
-				3FE6A391166B305700004609 /* Shape.cpp */,
-				3FE6A392166B305700004609 /* Shape.h */,
-				3FE6A394166B325900004609 /* Sphere.cpp */,
-				3FE6A395166B325900004609 /* Sphere.h */,
-				3FE6A397166B3C9600004609 /* Triangle.cpp */,
-				3FE6A398166B3C9600004609 /* Triangle.h */,
-				3FE6A402166C975C00004609 /* Light.cpp */,
-				3FE6A403166C975C00004609 /* Light.h */,
-				3FE6A405166C980A00004609 /* AmbientLight.cpp */,
-				3FE6A406166C980B00004609 /* AmbientLight.h */,
-				3FE6A408166C982100004609 /* PointLight.cpp */,
-				3FE6A409166C982200004609 /* PointLight.h */,
-				3FE6A40B166C983400004609 /* DirectionalLight.cpp */,
-				3FE6A40C166C983400004609 /* DirectionalLight.h */,
-				3FE6A420166D7C2A00004609 /* Material.cpp */,
-				3FE6A421166D7C2B00004609 /* Material.h */,
-				3FE6A423166D7F2000004609 /* SceneObject.cpp */,
-				3FE6A424166D7F2000004609 /* SceneObject.h */,
-				3FE6A426166D8CC600004609 /* Utils.cpp */,
-				3FE6A427166D8CC700004609 /* Utils.h */,
-				3FE6A429166DD71B00004609 /* OcclusionRay.cpp */,
-				3FE6A42A166DD71B00004609 /* OcclusionRay.h */,
+				3FAA310716714CB500EBDA3B /* Source */,
+				3FAA310616714CA000EBDA3B /* Headers */,
 			);
 			path = RayTracer;
 			sourceTree = "<group>";

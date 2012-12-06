@@ -4,8 +4,8 @@
 #include "st.h"
 #include <vector>
 #include <stack>
-//#include "tracer.h"
-// I shouldn't have to reinclude this
+
+
 #include "ImagePlane.h"
 #include "Shape.h"
 #include "Sphere.h"
@@ -24,7 +24,6 @@ class Scene
 public:
 	Scene(std::string sceneFilename);
 
-	/** CS 148 TODO: Add methods for the scene to render itself, etc. **/
     void Render();
 
 private:
@@ -49,22 +48,24 @@ private:
 	void ParsedDirectionalLight(const STVector3& dir, const STColor3f& col);
 	void ParsedMaterial(const STColor3f& amb, const STColor3f& diff, const STColor3f& spec, const STColor3f& mirr, float shine);
 
-	/** CS 148 TODO: Add instance vars to store camera, lights, objects, etc. **/
     
     STColor3f CalcColor(Intersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel);
     bool Occluded(SceneObject *o, Intersection surface_pt, Light *l);
     bool Intersect(Ray *ray, SceneObject **intersectedObject, Intersection **intersectionPoint);
     STColor3f reflectColor(Ray *bounceRay, int depthLevel, STColor3f currentColor, Intersection *intersectionPoint);
+    
     Camera *camera;
     ImagePlane *imagePlane;
     Material *lastDeclaredMaterial;
+    
     int bounceDepth;
+    float epsilon;
+    
     std::vector<Shape *> shapes;
     std::vector<SceneObject *> objects;
     std::vector<Light *> lights;
-    float epsilon;
-    
     std::stack<STTransform4> transStack;
+    
     STTransform4 curTransformation;
 
 
