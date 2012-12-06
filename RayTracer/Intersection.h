@@ -12,17 +12,19 @@
 #include <iostream>
 #include "stgl.h"
 #include "st.h"
+#include "Ray.h"
 //#include "Shape.h"
 
 
 class Intersection
 {
 public:
-	Intersection(float time, STVector3 intersect_pt, STVector3 normal);
+	Intersection(float time, STVector3 intersect_pt, STVector3 normal, Ray vRay);
     
     float t;
     STVector3 pt;
     STVector3 normal;
+    Ray viewingRay;
     // think want to store viewing ray too
 protected:
     

@@ -3,18 +3,17 @@
 #include <sstream>
 #include <iostream.h>
 
-STColor3f Scene::CalcColor(Intersection surface_pt, Ray *viewingRay, SceneObject *min_object, int depthLevel) {
-    
+STColor3f Scene::CalcColor(Intersection surfaceIntersection, Ray *viewingRay, SceneObject *min_object, int depthLevel) {
+    viewingRay = new Ray(surfaceIntersection.viewingRay);
     STColor3f calcColor = STColor3f(0, 0, 0);
-    Material *material = min_object->material;
     for (int i = 0; i < lights.size(); i++) {
         Light *l = lights[i];
-        if(Occluded(min_object, surface_pt, l) && (typeid(AmbientLight) != typeid(*l))) continue;
-        calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
+        if(Occluded(min_object, surfaceIntersection, l) && (typeid(AmbientLight) != typeid(*l))) continue;
+        calcColor = calcColor + l->sumTerm(surfaceIntersection, min_object->material, viewingRay);
     }
     
-    STVector3 R = Utils::reflectVector(surface_pt.normal, viewingRay->direction);
-    Ray *newBounceRay = new Ray(surface_pt.pt, surface_pt.pt - R);
+    STVector3 R = Utils::reflectVector(surfaceIntersection.normal, viewingRay->direction);
+    Ray *newBounceRay = new Ray(surfaceIntersection.pt, surfaceIntersection.pt - R);
     
     SceneObject *intersectedObject = NULL;
     Intersection *intersectionPoint = NULL;
@@ -23,7 +22,7 @@ STColor3f Scene::CalcColor(Intersection surface_pt, Ray *viewingRay, SceneObject
         return calcColor;
     }
     
-    return calcColor + material->mirr * CalcColor(*intersectionPoint, newBounceRay, intersectedObject, depthLevel + 1);
+    return calcColor + min_object->material->mirr * CalcColor(*intersectionPoint, newBounceRay, intersectedObject, depthLevel + 1);
 }
 
 bool Scene::Occluded(SceneObject *ob, Intersection surface_pt, Light *l) {
@@ -73,7 +72,7 @@ bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, Intersection **
         if (inter){
             
             //retransform point
-            inter = new Intersection(0.0, STVector3(o->transMatrix * STPoint3(inter->pt)), o->transMatrix.Inverse().Transpose() * inter->normal);
+            inter = new Intersection(0.0, STVector3(o->transMatrix * STPoint3(inter->pt)), o->transMatrix.Inverse().Transpose() * inter->normal, *ray);
             
             STVector3 worldPointPlane = ray->start + ray->direction;
             float dist = abs((inter->pt - worldPointPlane).Length());  /// maybe t

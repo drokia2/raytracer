@@ -41,7 +41,7 @@ Intersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //        STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
         
         STVector3 normal = CalcNormal(interRay, r);
-        Intersection *rt = new Intersection(t, interRay, normal);
+        Intersection *rt = new Intersection(t, interRay, normal, r.TransformRay(transMatrix.Inverse()));
         return rt;
     } else {
         float t1 = (-b - sqrt(discriminant)) / (2*a);
@@ -53,7 +53,7 @@ Intersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //            STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
             
             STVector3 normal = CalcNormal(interRay, r);
-            Intersection *rt = new Intersection(t2, interRay, normal);
+            Intersection *rt = new Intersection(t2, interRay, normal, r.TransformRay(transMatrix.Inverse()));
             return rt;
         }
         
@@ -63,7 +63,7 @@ Intersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //            STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
 
             STVector3 normal = CalcNormal(interRay, r);
-            Intersection *rt = new Intersection(t1, interRay, normal);
+            Intersection *rt = new Intersection(t1, interRay, normal, r.TransformRay(transMatrix.Inverse()));
             return rt;
         }
         
@@ -80,7 +80,7 @@ Intersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
 //        Intersection *rt = new Intersection(fmin(t1,t2), STVector3(inter_pt), normal);
         
         STVector3 normal = CalcNormal(interRay, r);
-        Intersection *rt = new Intersection(fmin(t1,t2), interRay, normal);
+        Intersection *rt = new Intersection(fmin(t1,t2), interRay, normal, r.TransformRay(transMatrix.Inverse()));
         return rt;
     }
 }

@@ -97,7 +97,7 @@ Intersection * Triangle::IntersectsRay(Ray r, STTransform4 transMatrix) {
         return NULL;
     }
     STVector3 normal = CalcNormal(*(r.InterpolatedRay(t)), r);
-    Intersection * rt = new Intersection(t, *(r.InterpolatedRay(t)), normal);
+    Intersection * rt = new Intersection(t, *(r.InterpolatedRay(t)), normal, r);
     
     return rt;
 }
