@@ -8,9 +8,9 @@
 
 #include "Intersection.h"
 
-Intersection::Intersection(float time, STVector3 intersect_pt, STVector3 normal){
+Intersection::Intersection(float time, STVector3 intersect_pt, STVector3 n){
     t = time;
     pt = STVector3(intersect_pt);
-    ptNormal = normal; //s.CalcNormal(intersect_pt);
+    normal = n; //s.CalcNormal(intersect_pt);
     
 }

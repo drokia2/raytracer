@@ -13,7 +13,7 @@ STColor3f Scene::CalcColor(Intersection surface_pt, Ray *viewingRay, SceneObject
         calcColor = calcColor + l->sumTerm(surface_pt, material, viewingRay);
     }
     
-    STVector3 R = Utils::reflectVector(surface_pt.ptNormal, viewingRay->direction);
+    STVector3 R = Utils::reflectVector(surface_pt.normal, viewingRay->direction);
     Ray *newBounceRay = new Ray(surface_pt.pt, surface_pt.pt - R);
     
     SceneObject *intersectedObject = NULL;
@@ -73,7 +73,7 @@ bool Scene::Intersect(Ray *ray, SceneObject **intersectedObject, Intersection **
         if (inter){
             
             //retransform point
-            inter = new Intersection(0.0, STVector3(o->transMatrix * STPoint3(inter->pt)), o->transMatrix.Inverse().Transpose() * inter->ptNormal);
+            inter = new Intersection(0.0, STVector3(o->transMatrix * STPoint3(inter->pt)), o->transMatrix.Inverse().Transpose() * inter->normal);
             
             STVector3 worldPointPlane = ray->start + ray->direction;
             float dist = abs((inter->pt - worldPointPlane).Length());  /// maybe t

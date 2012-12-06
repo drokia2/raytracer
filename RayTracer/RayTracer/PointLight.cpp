@@ -8,7 +8,7 @@ PointLight::PointLight(const STPoint3& loc,const STColor3f& c){
 STColor3f PointLight::sumTerm(Intersection inter, Material *material, Ray *viewingRay){
     STVector3 incomingLight = *location - inter.pt;
     incomingLight.Normalize();
-    STVector3 normal = inter.ptNormal;
+    STVector3 normal = inter.normal;
     normal.Normalize();
     STVector3 view = -viewingRay->direction;
     

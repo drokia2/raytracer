@@ -22,7 +22,7 @@ public:
     
     float t;
     STVector3 pt;
-    STVector3 ptNormal;
+    STVector3 normal;
     // think want to store viewing ray too
 protected:
     
