@@ -20,7 +20,6 @@ STVector3 Sphere::CalcNormal(STVector3 surface_pt, Ray unused){
 }
 
 Intersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
-//    r = r.TransformRay(transMatrix);
     float a, b, c;
     a = pow(r.direction.x,2) + pow(r.direction.y,2) + pow(r.direction.z,2);
     b = 2*((r.start.x - center.x)*r.direction.x + (r.start.y - center.y)*r.direction.y + (r.start.z - center.z)*r.direction.z);

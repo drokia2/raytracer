@@ -1,10 +1,3 @@
-//
-//  Triangle.cpp
-//  RayTracer
-//
-//  Created by Adriana Diakite on 12/1/12.
-//  Copyright (c) 2012 Adriana Diakite. All rights reserved.
-//
 
 #include "Triangle.h"
 
@@ -32,7 +25,6 @@ float determinant(float a, float b, float c, float d, float e, float f, float g,
 }
 
 Intersection * Triangle::IntersectsRay(Ray r, STTransform4 transMatrix) {
-//    printf("TODO: implement Sphere::IntersectsRay\n");
     float a,b,c,d,e,f,g,h,i;
     //find determinant of a
     a = v1.x - v2.x;
