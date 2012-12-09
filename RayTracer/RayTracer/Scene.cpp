@@ -358,7 +358,6 @@ void Scene::ParsedScale(float sx, float sy, float sz)
 
 void Scene::ParsedTranslate(float tx, float ty, float tz)
 {
-    printf(" parsed translate\n\n\n");
     // multiply current matrix by translate matrix
     curTransformation =  curTransformation *STTransform4::Translation(tx, ty, tz) ;
 
@@ -373,7 +372,6 @@ void Scene::ParsedSphere(const STPoint3& center, float radius)
     o->transMatrix = curTransformation;
     objects.push_back(o);
     
-    printf("sphere parsed\n");
 }
 
 void Scene::ParsedTriangle(const STPoint3& v1, const STPoint3& v2, const STPoint3& v3)

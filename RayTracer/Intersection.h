@@ -1,10 +1,4 @@
-//
-//  Intersection.h
-//  RayTracer
-//
-//  Created by Adriana Diakite on 12/3/12.
-//  Copyright (c) 2012 Adriana Diakite. All rights reserved.
-//
+
 
 #ifndef __RayTracer__Intersection__
 #define __RayTracer__Intersection__
@@ -13,7 +7,6 @@
 #include "stgl.h"
 #include "st.h"
 #include "Ray.h"
-//#include "Shape.h"
 
 
 class Intersection
@@ -21,11 +14,9 @@ class Intersection
 public:
 	Intersection(float time, STVector3 intersect_pt, STVector3 normal, Ray vRay);
     
-    float t;
     STVector3 pt;
     STVector3 normal;
     Ray incomingRay;
-    // think want to store viewing ray too
 protected:
     
     

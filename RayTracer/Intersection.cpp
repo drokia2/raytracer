@@ -9,7 +9,6 @@
 #include "Intersection.h"
 
 Intersection::Intersection(float time, STVector3 intersect_pt, STVector3 n, Ray vRay){
-    t = time;
     pt = STVector3(intersect_pt);
     normal = n; //s.CalcNormal(intersect_pt);
     incomingRay = vRay;
