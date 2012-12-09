@@ -35,10 +35,8 @@ Intersection *Sphere::IntersectsRay(Ray r, STTransform4 transMatrix) {
         if (r.invalidT(t)) {
             return NULL;
         }
-        //TODO: transform back to world coordinates
         
         STVector3 interRay = (*(r.InterpolatedRay(t)));
-//        STPoint3 inter_pt = transMatrix * (STPoint3(interRay));
         
         STVector3 normal = CalcNormal(interRay, r);
         Intersection *rt = new Intersection(t, interRay, normal, r.TransformRay(transMatrix.Inverse()));
